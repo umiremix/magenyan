@@ -43,5 +43,3 @@ $(function(){
 });
 
 })(jQuery);
-Window size: 1170 x 1053
-Viewport size: 1170 x 878
