@@ -216,6 +216,7 @@ body > header .bgm .controller {
   height: 49px;
   background: transparent url(/img/bgm_bg.png) 0 0 no-repeat;
   margin-right: 10px;
+  cursor: pointer;
 }
 body > header .bgm .controller img {
   position: absolute;
@@ -286,7 +287,7 @@ body > header .sns {
   }
 }
 
-.is--fullpage {
+#fullpage {
   z-index: 5;
 }
 
@@ -330,7 +331,7 @@ section.section .contents {
       background-repeat: no-repeat;
       background-position: center top;
       width: 100%;
-      height: 244px;
+      height: 50px;
       display: block;
     }
     .contents_body{
@@ -841,7 +842,73 @@ video {
 /* =====================================================
  * manga
  * ===================================================== */
-/*------ hoge ------ */
+#manga{
+  h1 {
+    position: absolute;
+    top: 60px;
+    left: -50%;
+    width: 100%;
+    margin-left: 50%;
+    text-align: center;
+  }
+  .contents_body{
+    background: transparent url(/img/contents_bg.png) center center repeat-y;
+    a:hover{
+      .ttl{
+        text-decoration: none;
+        span{
+          text-decoration: none;
+        }
+      }
+    }
+    ul{
+      overflow: hidden;
+      width: 270px + 270px + 80px;
+      margin: 0 auto;
+    }
+    li{
+      &:nth-child(odd){
+        float: left;
+        margin-right: 80px;
+      }
+      &:nth-child(even){
+        float: left;
+      }
+      width: 270px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+    .img{
+      &:before{
+        content: "";
+        background-image: url(/img/manga_arrow.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        position: absolute;
+        top: 30px;
+        z-index: 100;
+        width: 24px;
+        height: 22px;
+      }
+      background-color: #fff;
+      position: relative;
+      overflow: hidden;
+      height: 80px;
+      width: 80px;
+      float: left;
+      border-radius: 40px;
+      margin-right: 15px;
+    }
+    .ttl{
+      font-size: 17px;
+      line-height: 20px;
+      span{
+        display: block;
+        text-decoration: underline;
+      }
+    }
+  }
+}
 /* =====================================================
  * sns
  * ===================================================== */

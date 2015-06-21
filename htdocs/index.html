@@ -28,10 +28,10 @@
   <header>
     <div class="bgm">
       <div class="controller" onclick="soundStop()" id="soundStop">
-        <img src="img/bgm.png" alt="">
+        <img src="img/pause.png" alt="">
       </div>
       <div class="controller" onclick="soundStart()" id="soundStart" style="display:none;">
-        <img src="img/bgm.png" alt="">
+        <img src="img/play.png" alt="">
       </div>
       <p>HA・RI・TE イッパツ</p>
     </div>
@@ -40,17 +40,17 @@
     </div>
   </header>
 
-  <div class="is--fullpage">
+  <div id="fullpage">
 
-  <section id="main" class="section active load">
+  <section id="main" class="section active load" data-anchor="mainPage">
   <div class="contents contents-Nobg">
     <h1><img src="img/main_logo.png" alt="どすこい二代目まげニャン"></h1>
     <div class="contents_body">
       <nav>
         <ul>
-          <li><a href="#2ndPage" class="is--scroll"><img src="img/main_nav_chara.png" alt="キャラクター紹介" class="ov"></a></li>
+          <li><a href="#charaPage" class="is--scroll"><img src="img/main_nav_chara.png" alt="キャラクター紹介" class="ov"></a></li>
           <li><a href="https://store.line.me/stickershop/product/1103147/" class="is--scroll" target="_blank"><img src="img/main_nav_stamp.png" alt="LINEスタンプ" class="ov"></a></li>
-          <li><a href="#3rdPage" class="is--scroll"><img src="img/main_nav_manga.png" alt="漫画"></a></li>
+          <li><a href="#mangaPage" class="is--scroll"><img src="img/main_nav_manga.png" alt="漫画" class="ov"></a></li>
           <li><img src="img/main_nav_app.png" alt="アプリ"></li>
         </ul>
       </nav>
@@ -58,17 +58,17 @@
   </div>
   </section>
 
-  <section id="chara" class="section load">
+  <section id="chara" class="section load" data-anchor="charaPage">
   <div class="contents contents-bg">
     <h1><img src="img/chara_ttl.png" alt="キャラクター紹介"></h1>
     <div class="contents_body">
       <ul>
-        <li><img src="img/chara_thumb01.png" alt="まげニャン（助六&amp;ニャン）"><p>まげニャン<br>（助六&amp;ニャン）</p></li>
-        <li><img src="img/chara_thumb02.png" alt="桃山桃美"><p>桃山桃美</p></li>
-        <li><img src="img/chara_thumb03.png" alt="にゃにゃみ"><p>にゃにゃみ</p></li>
-        <li><img src="img/chara_thumb04.png" alt="武蔵"><p>武蔵</p></li>
-        <li><img src="img/chara_thumb05.png" alt="小山・シャムパッティ・邦夫"><p>小山・<br>シャムパッティ・邦夫</p></li>
-        <li><img src="img/chara_thumb06.png" alt="ボーノ・太郎"><p>ボーノ・太郎</p></li>
+        <li><a href="#"><img src="img/chara_thumb01.png" alt="まげニャン（助六&amp;ニャン）" class="ov"><p>まげニャン<br>（助六&amp;ニャン）</p></a></li>
+        <li><a href="#"><img src="img/chara_thumb02.png" alt="桃山桃美" class="ov"><p>桃山桃美</p></a></li>
+        <li><a href="#"><img src="img/chara_thumb03.png" alt="にゃにゃみ" class="ov"><p>にゃにゃみ</p></a></li>
+        <li><a href="#"><img src="img/chara_thumb04.png" alt="武蔵" class="ov"><p>武蔵</p></a></li>
+        <li><a href="#"><img src="img/chara_thumb05.png" alt="小山・シャムパッティ・邦夫" class="ov"><p>小山・<br>シャムパッティ・邦夫</p></a></li>
+        <li><a href="#"><img src="img/chara_thumb06.png" alt="ボーノ・太郎" class="ov"><p>ボーノ・太郎</p></a></li>
       </ul>
       <!-- inline -->
       <div style="display:none">
@@ -155,15 +155,77 @@
   </div>
   </section>
 
-  <section id="manga" class="section load">
+  <section id="manga" class="section load" data-anchor="mangaPage">
   <div class="contents contents-bg">
     <h1><img src="img/manga_ttl.png" alt="漫画"></h1>
     <div class="contents_body">
+      <ul>
+        <li>
+          <a href="#">
+            <div class="img">
+              <img src="img/manga/tb_01.png" alt="" class="ov">
+            </div>
+            <p class="ttl">
+              第1話<span>まげニャン、<br>スーパーヒーローに！</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img">
+              <img src="img/manga/tb_02.png" alt="" class="ov">
+            </div>
+            <p class="ttl">
+              第2話<span>まげニャンの憂鬱</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img">
+
+            </div>
+            <p class="ttl">
+              第3話<span>タイトルタイトル</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img">
+
+            </div>
+            <p class="ttl">
+              第4話<span>タイトルタイトル</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img">
+
+            </div>
+            <p class="ttl">
+              第5話<span>タイトルタイトル</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="img">
+
+            </div>
+            <p class="ttl">
+              第6話<span>タイトルタイトル</span>
+            </p>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
   </section>
 
-  <section id="sns" class="section load">
+  <section id="sns" class="section load" data-anchor="snsPage">
   <div class="wrp_contents-contact">
   <div class="contents contents-contact">
     <h1><img src="img/sns_ttl.png" alt="公式ツイッター"></h1>
@@ -186,7 +248,7 @@
 
   <footer id="footer">
     <div class="toTop">
-      <a href="#1stPage" class="is--scroll"><img src="img/toTop.png" alt="トップへ戻る" class="ov"></a>
+      <a href="#main" class="is--scroll"><img src="img/toTop.png" alt="トップへ戻る" class="ov"></a>
     </div>
       <small class="copyright">Copyright &copy; 2015 MageNyan All Rights Reserved.</small>
   </footer>
