@@ -647,10 +647,13 @@ body {
   color: #909090;
   font-size: 18px;
   line-height: 2;
-  font-family: Arial, Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  font-family: Arial, Verdana, "ＭＳ Ｐゴシック","游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
   width: 100%;
   height: 100%;
-  background: #aff6df url(/img/bg.png) center 40px no-repeat;
+  background-color: #aff6df;
+  background-image: url(/img/bg.png);
+  background-position: center 40px;
+  background-repeat: no-repeat;
 }
 
 @media only screen and (max-width: 768px) {
@@ -807,12 +810,12 @@ li {
 /*------ hidden ------ */
 /*------ invisible ------ */
 /*------ clearfix ------ */
-section#chara ul:before, .inlineBox .box .line:before, .inlineBox .box .innerBox .inner:before, section#chara ul:after, .inlineBox .box .line:after, .inlineBox .box .innerBox .inner:after {
+#chara ul:before, .inlineBox .box .line:before, .inlineBox .box .innerBox .inner:before, #chara ul:after, .inlineBox .box .line:after, .inlineBox .box .innerBox .inner:after {
   content: " ";
   display: table;
 }
 
-section#chara ul:after, .inlineBox .box .line:after, .inlineBox .box .innerBox .inner:after {
+#chara ul:after, .inlineBox .box .line:after, .inlineBox .box .innerBox .inner:after {
   clear: both;
 }
 
@@ -847,7 +850,7 @@ body > header .bgm {
   }
 }
 body > header .bgm .controller {
-  display: table-cell;
+  position: relative;
   vertical-align: middle;
   width: 49px;
   height: 49px;
@@ -856,7 +859,9 @@ body > header .bgm .controller {
 }
 
 body > header .bgm .controller img {
-  display: block;
+  position: absolute;
+  top: 15px;
+  left: 17px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -888,33 +893,32 @@ body > header .sns {
     margin-left: 0;
   }
 }
-body > footer {
+/*footer*/
+#footer {
+  position: relative;
+  bottom: 0;
   z-index: 7;
   width: 100%;
   text-align: center;
 }
+#footer .copyright {
+  position: absolute;
+  font-size: 12px;
+  bottom: 0;
+  left: -50%;
+  margin-left: 50%;
+  width: 100%;
+  text-align: center;
+}
+#footer .toTop {
+  position: absolute;
+  bottom: 35px;
+  right: 30px;
+  display: none;
+}
 
-@media only screen and (min-width: 769px) {
-  body > footer {
-    position: fixed;
-    bottom: 0;
-  }
-}
-body > footer small {
-  font-size: 89%;
-  font-size: 0.88889rem;
-}
-
-@media only screen and (min-width: 769px) {
-  body > footer .toTop {
-    position: absolute;
-    bottom: 35px;
-    right: 30px;
-    display: none;
-  }
-}
 @media only screen and (max-width: 768px) {
-  body > footer .toTop {
+  #footer .toTop {
     margin: 30px 0;
   }
 }
@@ -955,9 +959,29 @@ section.section .contents {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background: transparent url(/img/contents_bg.png) center center no-repeat;
     width: 847px;
     height: 586px;
+  }
+  section.section .contents.contents-bg:before {
+    content: "";
+    background-image: url(/img/contents_bg_top.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 100%;
+    height: 244px;
+    display: block;
+  }
+  section.section .contents.contents-bg:after {
+    content: "";
+    background-image: url(/img/contents_bg_bottom.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 100%;
+    height: 244px;
+    display: block;
+  }
+  section.section .contents.contents-bg .contents_body {
+    background: transparent url(/img/contents_bg.png) center center repeat-y;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1100,51 +1124,51 @@ video {
  * main
  * ===================================================== */
 @media only screen and (max-width: 768px) {
-  section#main h1 {
+  #main h1 {
     padding: 0 2%;
   }
 
-  section#main h1 img {
+  #main h1 img {
     width: 100%;
   }
 }
 @media only screen and (min-width: 769px) {
-  section#main h1 {
+  #main h1 {
     margin: 0 auto;
     width: 785px;
   }
 }
 @media only screen and (min-width: 769px) {
-  section#main nav {
+  #main nav {
     margin: 0 auto;
     width: auto;
   }
 
-  section#main nav ul {
+  #main nav ul {
     display: table;
     border-collapse: separate;
     border-spacing: 13px;
   }
 
-  section#main nav li {
+  #main nav li {
     display: table-cell;
   }
 }
 @media only screen and (max-width: 768px) {
-  section#main nav ul {
+  #main nav ul {
     text-align: center;
     margin-top: 10px;
   }
 
-  section#main nav li {
+  #main nav li {
     display: inline;
   }
 
-  section#main nav li:nth-child(odd) {
+  #main nav li:nth-child(odd) {
     margin-right: 3%;
   }
 
-  section#main nav li img {
+  #main nav li img {
     width: 40%;
     margin-bottom: 5px;
   }
@@ -1152,75 +1176,69 @@ video {
 /* =====================================================
  * chara
  * ===================================================== */
-section#chara .contents_body {
+#chara .contents_body {
   display: table;
+  width: 100%;
 }
 
-@media only screen and (min-width: 769px) {
-  section#chara .contents_body {
-    margin: 0 auto;
-    width: auto;
-    position: relative;
-    top: 200px;
-  }
-}
 @media only screen and (max-width: 768px) {
-  section#chara .contents_body {
+  #chara .contents_body {
     text-align: center;
     width: 100%;
   }
 }
 @media only screen and (min-width: 769px) {
-  section#chara h1 {
+  #chara h1 {
     position: absolute;
     top: 62px;
     left: 220px;
     width: inherit;
   }
 
-  section#chara ul {
+  #chara ul {
     width: 535px;
+    margin: -40px auto -30px;
   }
 
-  section#chara ul li {
+  #chara ul li {
     float: left;
     margin-right: 20px;
     width: 165px;
     height: 180px;
   }
 
-  section#chara ul li:nth-child(3) {
+  #chara ul li:nth-child(3) {
     margin-right: 0 !important;
   }
 
-  section#chara ul li:nth-child(6) {
+  #chara ul li:nth-child(6) {
     margin-right: 0 !important;
   }
 
-  section#chara .point {
+  #chara .point {
     z-index: 3;
   }
 
-  section#chara .point img {
+  #chara .point img {
     position: relative;
     top: -185px;
     left: 240px;
   }
 }
 @media only screen and (max-width: 768px) {
-  section#chara h1 {
+  #chara h1 {
     position: absolute;
     top: 7%;
     left: 20%;
     width: 55%;
   }
 
-  section#chara ul {
+  #chara ul {
     display: inline-block;
     text-align: center;
   }
 
-  section#chara ul li {
+  #chara ul li {
     display: inline-block;
     vertical-align: top;
     margin: 0 3% 3%;
@@ -1228,11 +1246,11 @@ section#chara .contents_body {
     width: 25%;
   }
 
-  section#chara ul li img {
+  #chara ul li img {
     width: 100%;
   }
 
-  section#chara .point {
+  #chara .point {
     z-index: 3;
     position: absolute;
     top: 5%;
@@ -1240,15 +1258,15 @@ section#chara .contents_body {
     width: 20%;
   }
 
-  section#chara .point img {
+  #chara .point img {
     width: 100%;
   }
 }
-section#chara ul li {
+#chara ul li {
   text-align: center;
 }
 
-section#chara ul li p {
+#chara ul li p {
   font-size: 89%;
   font-size: 0.88889rem;
   text-align: center;
@@ -1525,7 +1543,7 @@ section#chara ul li p {
  * sns
  * ===================================================== */
 @media only screen and (min-width: 769px) {
-  section#sns h1 {
+  #sns h1 {
     position: absolute;
     top: 105px;
     left: 155px;
@@ -1533,19 +1551,19 @@ section#chara ul li p {
   }
 }
 @media only screen and (max-width: 768px) {
-  section#sns h1 {
+  #sns h1 {
     position: absolute;
     top: 7%;
     left: 14%;
     width: 49%;
   }
 }
-section#sns .contents_body {
+#sns .contents_body {
   display: table;
 }
 
 @media only screen and (min-width: 769px) {
-  section#sns .contents_body {
+  #sns .contents_body {
     margin: 0 auto;
     width: auto;
     position: relative;
@@ -1553,43 +1571,43 @@ section#sns .contents_body {
   }
 }
 @media only screen and (max-width: 768px) {
-  section#sns .contents_body {
+  #sns .contents_body {
     text-align: center;
     width: 100%;
   }
 }
 @media only screen and (min-width: 769px) {
-  section#sns .twBox {
+  #sns .twBox {
     width: 460px;
   }
 }
 @media only screen and (max-width: 768px) {
-  section#sns .twBox {
+  #sns .twBox {
     width: 80%;
     display: inline-block;
     margin-bottom: 25px;
   }
 }
-section#sns .point {
+#sns .point {
   z-index: 6;
 }
 
 @media only screen and (min-width: 769px) {
-  section#sns .point img {
+  #sns .point img {
     position: relative;
     top: -235px;
     left: 130px;
   }
 }
 @media only screen and (max-width: 768px) {
-  section#sns .point {
+  #sns .point {
     position: absolute;
     top: 2%;
     right: 15%;
     width: 22%;
   }
 
-  section#sns .point img {
+  #sns .point img {
     width: 100%;
   }
 }

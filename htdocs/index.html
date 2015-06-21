@@ -26,8 +26,11 @@
   <![endif]-->
 
   <header>
-    <div class="bgm" style="display:none">
-      <div class="controller">
+    <div class="bgm">
+      <div class="controller" onclick="soundStop()" id="soundStop">
+        <img src="img/bgm.png" alt="">
+      </div>
+      <div class="controller" onclick="soundStart()" id="soundStart" style="display:none;">
         <img src="img/bgm.png" alt="">
       </div>
       <p>HA・RI・TE イッパツ</p>
@@ -39,7 +42,7 @@
 
   <div class="is--fullpage">
 
-  <section id="main" class="section active">
+  <section id="main" class="section active load">
   <div class="contents contents-Nobg">
     <h1><img src="img/main_logo.png" alt="どすこい二代目まげニャン"></h1>
     <div class="contents_body">
@@ -47,25 +50,25 @@
         <ul>
           <li><a href="#2ndPage" class="is--scroll"><img src="img/main_nav_chara.png" alt="キャラクター紹介" class="ov"></a></li>
           <li><a href="https://store.line.me/stickershop/product/1103147/" class="is--scroll" target="_blank"><img src="img/main_nav_stamp.png" alt="LINEスタンプ" class="ov"></a></li>
+          <li><a href="#3rdPage" class="is--scroll"><img src="img/main_nav_manga.png" alt="漫画"></a></li>
           <li><img src="img/main_nav_app.png" alt="アプリ"></li>
-          <li><img src="img/main_nav_manga.png" alt="漫画"></li>
         </ul>
       </nav>
     </div>
   </div>
   </section>
 
-  <section id="chara" class="section">
+  <section id="chara" class="section load">
   <div class="contents contents-bg">
     <h1><img src="img/chara_ttl.png" alt="キャラクター紹介"></h1>
     <div class="contents_body">
       <ul>
-        <li><img src="img/chara_thumb01.png" alt="まげニャン（助六&amp;ニャン）" class="ov"><p>まげニャン<br>（助六&amp;ニャン）</p></li>
-        <li><img src="img/chara_thumb02.png" alt="桃山桃美" class="ov"><p>桃山桃美</p></li>
-        <li><img src="img/chara_thumb03.png" alt="にゃにゃみ" class="ov"><p>にゃにゃみ</p></li>
-        <li><img src="img/chara_thumb04.png" alt="武蔵" class="ov"><p>武蔵</p></li>
-        <li><img src="img/chara_thumb05.png" alt="小山・シャムパッティ・邦夫" class="ov"><p>小山・<br>シャムパッティ・邦夫</p></li>
-        <li><img src="img/chara_thumb06.png" alt="ボーノ・太郎" class="ov"><p>ボーノ・太郎</p></li>
+        <li><img src="img/chara_thumb01.png" alt="まげニャン（助六&amp;ニャン）"><p>まげニャン<br>（助六&amp;ニャン）</p></li>
+        <li><img src="img/chara_thumb02.png" alt="桃山桃美"><p>桃山桃美</p></li>
+        <li><img src="img/chara_thumb03.png" alt="にゃにゃみ"><p>にゃにゃみ</p></li>
+        <li><img src="img/chara_thumb04.png" alt="武蔵"><p>武蔵</p></li>
+        <li><img src="img/chara_thumb05.png" alt="小山・シャムパッティ・邦夫"><p>小山・<br>シャムパッティ・邦夫</p></li>
+        <li><img src="img/chara_thumb06.png" alt="ボーノ・太郎"><p>ボーノ・太郎</p></li>
       </ul>
       <!-- inline -->
       <div style="display:none">
@@ -152,14 +155,24 @@
   </div>
   </section>
 
-  <section id="sns" class="section">
+  <section id="manga" class="section load">
+  <div class="contents contents-bg">
+    <h1><img src="img/manga_ttl.png" alt="漫画"></h1>
+    <div class="contents_body">
+    </div>
+  </div>
+  </section>
+
+  <section id="sns" class="section load">
   <div class="wrp_contents-contact">
   <div class="contents contents-contact">
     <h1><img src="img/sns_ttl.png" alt="公式ツイッター"></h1>
     <div class="contents_body">
       <div class="twBox">
-        <a class="twitter-timeline"  href="https://twitter.com/dosukoimage" data-widget-id="602696850882187264">@dosukoimageさんのツイート</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <a class="twitter-timeline" href="https://twitter.com/dosukoimage" data-widget-id="594529317171802112">@dosukoimageさんのツイート</a>
+        <script>
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        </script>
       </div>
     </div>
   </div>
@@ -171,17 +184,15 @@
 
   </div>
 
-  <footer>
+  <footer id="footer">
     <div class="toTop">
-      <nav><a href="#1stPage" class="is--scroll"><img src="img/toTop.png" alt="トップへ戻る" class="ov"></a></nav>
+      <a href="#1stPage" class="is--scroll"><img src="img/toTop.png" alt="トップへ戻る" class="ov"></a>
     </div>
-    <div class="copyright">
-      <small>Copyright (C) 2015 MageNyan All Rights Reserved.</small>
-    </div>
+      <small class="copyright">Copyright &copy; 2015 MageNyan All Rights Reserved.</small>
   </footer>
 
-  <audio autoplay loop controls>
-    <source src="bgm/demo0510.mp3">
+  <audio autoplay loop id="is--sound">
+    <source src="bgm/demo0510.mp3" type="audio/mp3">
   </audio>
 
   <div class="pattern"></div>
