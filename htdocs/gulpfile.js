@@ -27,7 +27,7 @@ gulp.task( 'ftpUp', function() {
         host:     'm9.coreserver.jp',
         user:     'bambam',
         password: 'oqmCqXInd7S3',
-        parallel: 22,
+        parallel: 5,
         log: gutil.log
     } );
     var globs = [
