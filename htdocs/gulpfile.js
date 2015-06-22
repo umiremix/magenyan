@@ -18,7 +18,9 @@ var pngquant = require('imagemin-pngquant'); // 画像圧縮
 var plumber = require('gulp-plumber'); // コンパイルエラーが出てもwatchを止めない
 var uglify = require('gulp-uglify');// js圧縮
 var rename = require('gulp-rename');// リネーム
- 
+var gutil = require('gulp-util'); //ftp用
+var ftp = require('gulp-ftp'); //ftp用
+
 // js圧縮
 gulp.task('compress', function() {
   gulp.src(path.jsPath + '/main.js')
@@ -79,5 +81,18 @@ gulp.task('jsWatch', function() {
   });
 });
 
+// ftp
+gulp.task('ftpUp', function () {
+    return gulp.src('src/*')
+        .pipe(ftp({
+            host: 'm9.coreserver.jp',
+            user: 'bambam',
+            pass: 'oqmCqXInd7S3',
+            port: 22,
+            remotePath: '/public_html/mage.bam-tone.com'
+        }))
+        .pipe(gutil.noop());
+});
+
 // タスク実行
-gulp.task('default', ['webserver','compass','sassWatch','compress','jsWatch','imagemin']); // デフォルト実行
+gulp.task('default', ['webserver','compass','sassWatch','compress','jsWatch','imagemin','ftpUp']); // デフォルト実行
