@@ -58,15 +58,14 @@ $(function(t) {
   });
 });
 
-//toTop
-$(function() {
-  var topBtn = $('#pageTop');
-  topBtn.click(function () {
-    $('body,html').animate({
-      scrollTop: 0
-      }, 1000); return false;
-    });
-});
+//boxOpen
+function boxOpen(i){
+  var box = document.getElementById('box');
+  box.style.display = "block";
+  if(i == "mage"){
+    console.log(i);
+  }
+}
 
 //etc
 // ! function (t) {
