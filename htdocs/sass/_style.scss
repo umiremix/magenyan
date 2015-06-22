@@ -190,16 +190,24 @@ li {
 /* =====================================================
  * b04. layout
  * ===================================================== */
+ #gg {
+display: none;
+}
+#gg0{
+display: table-cell;
+vertical-align: middle;
+text-align: center;
+}
  .load{
    opacity: 0;
  }
-body > header {
+#header {
   z-index: 7;
   position: fixed;
   top: 0;
   width: 100%;
 }
-body > header .bgm {
+#header .bgm {
   position: absolute;
   top: 8px;
   left: 13px;
@@ -208,11 +216,11 @@ body > header .bgm {
   border-spacing: 10px;
 }
 @media only screen and (max-width: 768px) {
-  body > header .bgm {
+  #header .bgm {
     display: none;
   }
 }
-body > header .bgm .controller {
+#header .bgm .controller {
   position: relative;
   vertical-align: middle;
   width: 49px;
@@ -221,33 +229,33 @@ body > header .bgm .controller {
   margin-right: 10px;
   cursor: pointer;
 }
-body > header .bgm .controller img {
+#header .bgm .controller img {
   position: absolute;
   top: 15px;
   left: 17px;
   margin-left: auto;
   margin-right: auto;
 }
-body > header .bgm p {
+#header .bgm p {
   display: table-cell;
   vertical-align: middle;
 }
-body > header .bgm p:before {
+#header .bgm p:before {
   content: "♪";
   margin-right: 5px;
 }
-body > header .sns {
+#header .sns {
   position: absolute;
   top: 0;
 }
 @media only screen and (min-width: 769px) {
-  body > header .sns {
+  #header .sns {
     left: 50%;
     margin-left: 20%;
   }
 }
 @media only screen and (max-width: 768px) {
-  body > header .sns {
+  #header .sns {
     right: 2%;
     margin-left: 0;
   }

@@ -19,7 +19,32 @@ var plumber = require('gulp-plumber'); // コンパイルエラーが出てもwa
 var uglify = require('gulp-uglify');// js圧縮
 var rename = require('gulp-rename');// リネーム
 var gutil = require('gulp-util'); //ftp用
-var ftp = require('gulp-ftp'); //ftp用
+var ftp = require('vinyl-ftp'); //ftp用
+
+// ftp
+gulp.task( 'ftpUp', function() {
+    var conn = ftp.create( {
+        host:     'm9.coreserver.jp',
+        user:     'bambam',
+        password: 'oqmCqXInd7S3',
+        parallel: 22,
+        log: gutil.log
+    } );
+    var globs = [
+        'bgm/**',
+        'css/**',
+        'img/**',
+        'js/**',
+        'sass/**',
+        'video/**',
+        'index.html'
+    ];
+    // using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+    return gulp.src( globs, { base: '.', buffer: false } )
+        .pipe( conn.newer( '/public_html/mage.bam-tone.com' ) ) // only upload newer files
+        .pipe( conn.dest( '/public_html/mage.bam-tone.com' ) );
+} );
 
 // js圧縮
 gulp.task('compress', function() {
@@ -81,17 +106,5 @@ gulp.task('jsWatch', function() {
   });
 });
 
-// ftp
-gulp.task('ftpUp', function () {
-    return gulp.src(path.jsPath + '/*.js')
-        .pipe(ftp({
-            host: 'm9.coreserver.jp',
-            user: 'bambam',
-            pass: 'oqmCqXInd7S3',
-            remotePath: '/public_html/mage.bam-tone.com'
-        }))
-        .pipe(gutil.noop());
-});
-
 // タスク実行
-gulp.task('default', ['webserver','compass','sassWatch','compress','jsWatch','imagemin','ftpUp']); // デフォルト実行
+gulp.task('default', ['ftpUp','webserver','compass','sassWatch','compress','jsWatch','imagemin']); // デフォルト実行

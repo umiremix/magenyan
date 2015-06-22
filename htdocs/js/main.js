@@ -1,4 +1,8 @@
 //load
+window.onload = function() {
+document.getElementById('gg0').style.display = 'none';
+document.getElementById('gg').style.display = 'block';
+}
 $(window).load(function(){
   $('.load').each(function(){
     $(this).removeClass('load');
