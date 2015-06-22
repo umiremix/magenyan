@@ -83,12 +83,11 @@ gulp.task('jsWatch', function() {
 
 // ftp
 gulp.task('ftpUp', function () {
-    return gulp.src('src/*')
+    return gulp.src(path.jsPath + '/*.js')
         .pipe(ftp({
             host: 'm9.coreserver.jp',
             user: 'bambam',
             pass: 'oqmCqXInd7S3',
-            port: 22,
             remotePath: '/public_html/mage.bam-tone.com'
         }))
         .pipe(gutil.noop());

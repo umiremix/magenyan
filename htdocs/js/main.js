@@ -1,4 +1,9 @@
 //load
+$(window).load(function(){
+  $('.load').each(function(){
+    $(this).removeClass('load');
+  });
+});
 
 // sound
 var getSound = document.getElementById("is--sound");
