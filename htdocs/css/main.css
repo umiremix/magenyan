@@ -832,10 +832,13 @@ li {
   display: none;
 }
 
-#gg0 {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+#gg0 img {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .load {
@@ -898,8 +901,7 @@ li {
 
 @media only screen and (min-width: 769px) {
   #header .sns {
-    left: 50%;
-    margin-left: 20%;
+    right: 20px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -910,7 +912,7 @@ li {
 }
 /*footer*/
 #footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   z-index: 7;
   width: 100%;

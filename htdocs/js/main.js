@@ -26,8 +26,10 @@ function soundStart(){
 
 // fullpage
 $(function() {
+  var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
-      anchors:['mainPage','charaPage','mangaPage','snsPage']
+      anchors:['mainPage','charaPage','mangaPage','snsPage'],
+      onLeave: function(){topBtn.fadeIn();},
   });
 });
 
@@ -37,6 +39,16 @@ $(function(t) {
   t.each(i, function (i, n) {
     t("#" + n).append('<div class="point"><img src="img/' + n + '_ttl_point.png"></div>')
   });
+});
+
+//toTop
+$(function() {
+  var topBtn = $('#pageTop');
+  topBtn.click(function () {
+    $('body,html').animate({
+      scrollTop: 0
+      }, 1000); return false;
+    });
 });
 
 //etc
