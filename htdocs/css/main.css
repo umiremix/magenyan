@@ -928,7 +928,7 @@ li {
   text-align: center;
 }
 #footer .toTop {
-  position: absolute;
+  position: fixed;
   bottom: 35px;
   right: 30px;
   display: none;

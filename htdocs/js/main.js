@@ -29,7 +29,24 @@ $(function() {
   var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
       anchors:['mainPage','charaPage','mangaPage','snsPage'],
-      onLeave: function(){topBtn.fadeIn();},
+      onLeave: function(o, n, e){
+                 $(this);
+                 1 == o && "down" == e && ($(".toTop").fadeIn("slow"), $(".toTop").animate({
+                     bottom: "12"
+                 }, {
+                     duration: 600,
+                     queue: !1
+                 }))
+             },
+             afterLoad: function(o, n) {
+                 $(this);
+                 1 == n && ($(".toTop").fadeOut("fast"), $(".toTop").animate({
+                     bottom: "35"
+                 }, {
+                     duration: 600,
+                     queue: !1
+                 }))
+             }
   });
 });
 
