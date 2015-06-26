@@ -15,7 +15,7 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #cboxWrapper {
@@ -37,7 +37,7 @@
 }
 
 #cboxLoadedContent {
-  overflow: auto;
+  /* overflow: auto; */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -88,8 +88,8 @@
 */
 #cboxOverlay {
   background: #fff;
-  opacity: 0.9;
-  filter: alpha(opacity=90);
+  opacity: 0.4;
+  filter: alpha(opacity=40);
 }
 
 #colorbox {
@@ -112,12 +112,16 @@
 }
 
 #cboxLoadedContent {
-  background: #000;
+  background-color: #fff;
+  background-image: url(/img/chara_lb/bg.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
   padding: 1px;
+  position: relative;
 }
 
 #cboxLoadingGraphic {
-  background: url(images/loading.gif) no-repeat center center;
+  background: url(/img/loading.gif) no-repeat center center;
 }
 
 #cboxLoadingOverlay {
@@ -139,7 +143,7 @@
 }
 
 /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
-#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+#cboxPrevious, #cboxNext, #cboxClose {
   border: 0;
   padding: 0;
   margin: 0;
@@ -149,11 +153,11 @@
   height: 20px;
   position: absolute;
   top: -20px;
-  background: url(images/controls.png) no-repeat 0 0;
+  /*background: url(images/controls.png) no-repeat 0 0;*/
 }
 
 /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
-#cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {
+#cboxPrevious:active, #cboxNext:active, #cboxClose:active {
   outline: 0;
 }
 
@@ -216,30 +220,133 @@
   margin-top: 0;
 }
 
-#cboxContent, #cboxLoadedContent, #cboxLoadingOverlay {
+#cboxContent, #cboxLoadingOverlay {
   background: transparent;
 }
 
 #cboxLoadingGraphic {
-  background: url(../img/loading.gif) no-repeat center center;
+  background: url(/img/loading.gif) no-repeat center center;
 }
 
-#cboxPrevious, #cboxNext, #cboxSlideshow {
+#cboxSlideshow {
   background: none;
   display: none;
 }
 
+/* Close */
 #cboxClose {
-  background: url(../img/chara_lb/close.png) no-repeat 0 0;
+  background: url(/img/chara_lb/close.png) no-repeat 0 0;
   position: absolute;
-  top: 0;
-  right: 23px;
+  top: -65px;
+  right: -65px;
   width: 67px;
   height: 67px;
 }
-
 #cboxClose:hover {
   background-position: 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
+}
+
+/* Prev */
+#cboxPrevious{
+  background: url(../img/chara_lb/prev.png) no-repeat 0 0;
+  position: absolute;
+  top: 50%;
+  left: -(32px + 47px);
+  width: 47px;
+  height: 47px;
+}
+#cboxPrevious:hover {
+  background-position: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+
+/* Next */
+#cboxNext{
+  background: url(/img/chara_lb/next.png) no-repeat 0 0;
+  position: absolute;
+  top: 50%;
+  right: -(32px + 47px);
+  width: 47px;
+  height: 47px;
+}
+#cboxNext:hover {
+  background-position: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+
+/* name text chara_img */
+.box{
+  position: relative;
+  width: 595px;
+  height: 543px;
+  .name {
+    position: relative;
+    float: right;
+    width: 168px;
+    height: 543px;
+    margin-right: 20px;
+    img {
+      position: absolute;
+      top: 75px;
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+  }
+  .text{
+    position: absolute;
+    right: 220px;
+    top: 75px;
+    height: 400px;
+    writing-mode: tb-rl; /* IE独自仕様 */
+    writing-mode: vertical-rl;
+    -moz-writing-mode: vertical-rl;
+    -o-writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+  }
+  .chara_img{
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+  }
+  &#koyama{
+    .chara_img{
+      bottom: -40px;
+      left: -109px;
+    }
+  }
+  &#musashi{
+    .chara_img{
+      bottom: -42px;
+      left: -36px;
+    }
+  }
+  &#nyanya{
+    .chara_img{
+      bottom: -51px;
+      left: -78px;
+    }
+  }
+  &#momo{
+    .chara_img{
+      bottom: -42px;
+      left: -34px;
+    }
+  }
+  &#magenyan{
+    .chara_img{
+      bottom: -43px;
+      left: -110px;
+    }
+  }
+  &#taro{
+    .chara_img{
+      bottom: -48px;
+      left: -53px;
+    }
+  }
 }

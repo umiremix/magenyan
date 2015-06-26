@@ -1,12 +1,10 @@
 //load
-window.onload = function() {
-document.getElementById('gg0').style.display = 'none';
-document.getElementById('gg').style.display = 'block';
-}
 $(window).load(function(){
-  $('.load').each(function(){
-    $(this).removeClass('load');
-  });
+    $('#gg0').css({'display':'none'});
+    $('#gg').css({'display':'block'});
+    $('.load').each(function(){
+        $(this).removeClass('load');
+    });
 });
 
 // sound
@@ -29,23 +27,29 @@ $(function() {
   var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
       anchors:['mainPage','charaPage','mangaPage','snsPage'],
-      onLeave: function(o, n, e){
-                 $(this);
-                 1 == o && "down" == e && ($(".toTop").fadeIn("slow"), $(".toTop").animate({
-                     bottom: "12"
-                 }, {
-                     duration: 600,
-                     queue: !1
-                 }))
+      onLeave: function(index, nextIndex, direction){
+                  if(index == 1 && direction =='down'){
+                      $(".toTop").fadeIn("slow"), $(".toTop").animate({
+                          bottom: "12"
+                      }, {
+                          duration: 600,
+                          queue: !1
+                      });
+                  }else if(index == 4 && direction == 'up'){
+                      $(".copyright").fadeOut("fast");
+                  }
              },
-             afterLoad: function(o, n) {
-                 $(this);
-                 1 == n && ($(".toTop").fadeOut("fast"), $(".toTop").animate({
-                     bottom: "35"
-                 }, {
-                     duration: 600,
-                     queue: !1
-                 }))
+             afterLoad: function(anchorLink,index) {
+                 if(index == 1){
+                     $(".toTop").fadeOut("fast"), $(".toTop").animate({
+                         bottom: "35"
+                     }, {
+                         duration: 600,
+                         queue: !1
+                     });
+                 }else if(index == 4){
+                     $(".copyright").fadeIn("slow");
+                 }
              }
   });
 });
@@ -60,9 +64,14 @@ $(function(t) {
 
 //colorbox
 $(function(){
-    $('.chara_tb').colorbox({inline:true, href: function(){
+    $('.chara_tb').colorbox({inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
         var $getHref = $(this).find('a').attr('href');
         return $getHref;
     }
     });
+});
+
+//sp
+$(function(){
+   $
 });

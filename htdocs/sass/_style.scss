@@ -16,14 +16,16 @@ body {
   width: 100%;
   height: 100%;
   background-color: #aff6df;
-  background-image: url(/img/bg.png);
-  background-position: center 40px;
-  background-repeat: no-repeat;
+  background-image: url(/img/sp_bg.png),url(/img/bg_pattern.png);
+  background-position: center center,0 0;
+  background-repeat: no-repeat,repeat;
+  background-size: auto auto,3px 3px;
+  min-width: 320px;
 }
 @media only screen and (max-width: 768px) {
   html,
   body {
-    background-size: 633px auto;
+    background-image: none;
   }
 }
 
@@ -69,6 +71,13 @@ video {
 
 img {
   border: none;
+}
+@media only screen and (max-width: 640px) {
+  img {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
 }
 
 textarea {
@@ -207,6 +216,12 @@ li {
   left: 0;
   right:0;
   bottom:0;
+  z-index: 1;
+}
+@media screen and (max-width:640px) {
+  #gg0 img{
+    width: 80px;
+  }
 }
  .load{
    opacity: 0;
@@ -257,16 +272,12 @@ li {
 #header .sns {
   position: absolute;
   top: 0;
+  right: 20px;
 }
-@media only screen and (min-width: 769px) {
+@media only screen and (max-width: 640px) {
   #header .sns {
-    right: 20px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #header .sns {
-    right: 2%;
-    margin-left: 0;
+    right: (20px / 2);
+    width: (314px / 2);
   }
 }
 /*footer*/
@@ -284,18 +295,13 @@ li {
     margin-left: 50%;
     width: 100%;
     text-align: center;
+    display: none;
   }
   .toTop {
     position: fixed;
     bottom: 35px;
     right: 30px;
     display: none;
-  }
-}
-
-@media only screen and (min-width: 769px) {
-  #footer {
-
   }
 }
 
@@ -311,32 +317,25 @@ li {
   z-index: 5;
 }
 
-section.section {
+.section {
   width: 100%;
   height: 100%;
   position: relative;
 }
-@media only screen and (max-width: 768px) {
-  section.section:first-child {
-    padding-top: 387px;
-  }
-}
-section.section .contents {
+
+.section .contents {
   z-index: 5;
 }
-@media only screen and (min-width: 769px) {
-  section.section .contents.contents-Nobg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
+.section .contents.contents-Nobg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-@media only screen and (min-width: 769px) {
-  section.section .contents.contents-bg {
-    &:before{
+  .section .contents.contents-bg {
+    &:before {
       content: "";
       background-image: url(/img/contents_bg_top.png);
       background-repeat: no-repeat;
@@ -345,7 +344,7 @@ section.section .contents {
       height: 244px;
       display: block;
     }
-    &:after{
+    &:after {
       content: "";
       background-image: url(/img/contents_bg_bottom.png);
       background-repeat: no-repeat;
@@ -354,7 +353,7 @@ section.section .contents {
       height: 50px;
       display: block;
     }
-    .contents_body{
+    .contents_body {
       background: transparent url(/img/contents_bg.png) center center repeat-y;
     }
     position: absolute;
@@ -366,55 +365,57 @@ section.section .contents {
     width: 847px;
     height: 586px;
   }
-}
+
 @media only screen and (max-width: 768px) {
-  section.section .contents.contents-bg {
-    background-color: #ffefe5;
+   section.section .contents.contents-bg {
+   background-color: #ffefe5;
     width: 87%;
     margin: 0 auto;
     background-size: contain;
-  }
+ }
 }
-@media only screen and (min-width: 769px) {
-  section.section .contents.contents-contact {
-    background: transparent url(/img/contents_bg_contact.png) center center no-repeat;
-    width: 847px;
-    height: 586px;
-  }
+
+ section.section .contents.contents-contact {
+   background: transparent url(/img/contents_bg_contact.png) center center no-repeat;
+  width: 847px;
+  height: 586px;
+}
+
+@media only screen and (max-width: 768px) {
+ section.section .contents.contents-contact {
+   background-color: #ffefe5;
+  width: 87%;
+ margin: 0 auto;
+   background-size: contain;
+}
 }
 @media only screen and (max-width: 768px) {
-  section.section .contents.contents-contact {
-    background-color: #ffefe5;
-    width: 87%;
-    margin: 0 auto;
-    background-size: contain;
-  }
+ section.section h1 {
+  z-index: 5;
+ }
+ section.section h1 img {
+  width: 100%;
+  vertical-align: top;
+ }
+section.section .contents_bg_h {
+ width: 100%;
+ position: relative;
+ z-index: 4;
 }
-@media only screen and (max-width: 768px) {
-  section.section h1 {
-    z-index: 5;
-  }
-  section.section h1 img {
-    width: 100%;
-    vertical-align: top;
-  }
-  section.section .contents_bg_h {
-    width: 100%;
-    position: relative;
-    z-index: 4;
-  }
-  section.section .contents_bg_h img {
-    width: 100%;
-  }
-  section.section .contents_bg_f {
-    width: 87%;
-    margin: 0 auto;
-  }
-  section.section .contents_bg_f img {
-    width: 100%;
-    vertical-align: top;
-  }
+section.section .contents_bg_h img {
+   width: 100%;
 }
+section.section .contents_bg_f {
+   width: 87%;
+  margin: 0 auto;
+ }
+ section.section .contents_bg_f img {
+width: 100%;
+  vertical-align: top;
+ }
+}
+
+
 section.section .contact {
   text-align: center;
 }
@@ -431,6 +432,12 @@ section.section .contact {
     width: 87%;
   }
 }
+@media only screen and (max-width: 768px) {
+  .contents.contents-Nobg {
+    width: 90%;
+  }
+}
+
 section.section .wrp_contents-contact {
   z-index: 5;
 }
@@ -504,9 +511,14 @@ video {
 @media only screen and (max-width: 768px) {
   #main h1 {
     padding: 0 2%;
+    background-image: url(/img/sp_bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
   }
   #main h1 img {
     width: 100%;
+    margin: 5% 0 30%;
   }
 }
 @media only screen and (min-width: 769px) {
