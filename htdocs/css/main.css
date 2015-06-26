@@ -401,6 +401,10 @@ th {
     Colorbox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
+#colorbox {
+  display: none;
+}
+
 #colorbox, #cboxOverlay, #cboxWrapper {
   position: absolute;
   top: 0;
@@ -612,7 +616,7 @@ th {
 }
 
 #cboxLoadingGraphic {
-  background: url(../img/colorbox/loading.gif) no-repeat center center;
+  background: url(../img/loading.gif) no-repeat center center;
 }
 
 #cboxPrevious, #cboxNext, #cboxSlideshow {
@@ -621,7 +625,7 @@ th {
 }
 
 #cboxClose {
-  background: url(../img/colorbox/close.png) no-repeat 0 0;
+  background: url(../img/chara_lb/close.png) no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 23px;
@@ -830,6 +834,14 @@ li {
  * ===================================================== */
 #gg {
   display: none;
+}
+
+#gg0 {
+  width: 100%;
+  height: 100%;
+  background-color: #aff6df;
+  background-image: url(/img/bg_pattern.png);
+  background-repeat: repeat;
 }
 
 #gg0 img {
@@ -1289,11 +1301,6 @@ video {
   text-align: center;
   line-height: 1.2;
   margin-top: 5px;
-}
-
-/*------ box ------ */
-#box {
-  display: none;
 }
 
 /* =====================================================

@@ -7,6 +7,9 @@
     Colorbox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
+#colorbox{
+  display: none;
+}
 #colorbox, #cboxOverlay, #cboxWrapper {
   position: absolute;
   top: 0;
@@ -218,7 +221,7 @@
 }
 
 #cboxLoadingGraphic {
-  background: url(../img/colorbox/loading.gif) no-repeat center center;
+  background: url(../img/loading.gif) no-repeat center center;
 }
 
 #cboxPrevious, #cboxNext, #cboxSlideshow {
@@ -227,7 +230,7 @@
 }
 
 #cboxClose {
-  background: url(../img/colorbox/close.png) no-repeat 0 0;
+  background: url(../img/chara_lb/close.png) no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 23px;
