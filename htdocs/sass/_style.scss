@@ -339,9 +339,10 @@ li {
       content: "";
       background-image: url(/img/contents_bg_top.png);
       background-repeat: no-repeat;
-      background-position: center top;
+      background-position: center bottom;
+      background-size: 100% auto;
       width: 100%;
-      height: 244px;
+      height: 245px;
       display: block;
     }
     &:after {
@@ -349,12 +350,14 @@ li {
       background-image: url(/img/contents_bg_bottom.png);
       background-repeat: no-repeat;
       background-position: center top;
+      background-size: 100% auto;
       width: 100%;
       height: 50px;
       display: block;
     }
     .contents_body {
       background: transparent url(/img/contents_bg.png) center center repeat-y;
+      background-size: 100% auto;
     }
     position: absolute;
     top: 50%;
@@ -365,10 +368,17 @@ li {
     width: 847px;
     height: 586px;
   }
+  @media only screen and (max-width: 768px) {
+    .section .contents.contents-bg {
+      &:before {
+        height: 33%;
+      }
+    }
+  }
 
 @media only screen and (max-width: 768px) {
    section.section .contents.contents-bg {
-   background-color: #ffefe5;
+   /*background-color: #ffefe5;*/
     width: 87%;
     margin: 0 auto;
     background-size: contain;
@@ -565,15 +575,13 @@ video {
   display: table;
   width: 100%;
 }
-@media only screen and (min-width: 769px) {
-  #chara .contents_body {
-  }
+#chara ul li p {
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 5px;
 }
-@media only screen and (max-width: 768px) {
-  #chara .contents_body {
-    text-align: center;
-    width: 100%;
-  }
+#chara ul li {
+  text-align: center;
 }
 @media only screen and (min-width: 769px) {
   #chara h1 {
@@ -583,13 +591,13 @@ video {
     width: inherit;
   }
   #chara ul {
-    width: 535px;
+    width: 600px;
     margin: -40px auto -30px;
   }
   #chara ul li {
     float: left;
-    margin-right: 20px;
-    width: 165px;
+    margin-right: 3px;
+    width: 198px;
     height: 180px;
   }
   #chara ul li:nth-child(3) {
@@ -599,7 +607,7 @@ video {
     margin-right: 0 !important;
   }
   #chara .point {
-    z-index: 3;
+    z-index: -1;
   }
   #chara .point img {
     position: relative;
@@ -608,11 +616,15 @@ video {
   }
 }
 @media only screen and (max-width: 768px) {
+  #chara .contents_body {
+    text-align: center;
+    width: 100%;
+  }
   #chara h1 {
     position: absolute;
-    top: 7%;
-    left: 20%;
-    width: 55%;
+  left: 20%;
+  width: 55%;
+  margin-top: -22%;
   }
   #chara ul {
     display: inline-block;
@@ -623,31 +635,25 @@ video {
     vertical-align: top;
     margin: 0 3% 3%;
     text-align: center;
-    width: 25%;
+    width: 20%;
+    p{
+      font-size: 10px;
+    }
   }
   #chara ul li img {
     width: 100%;
   }
   #chara .point {
-    z-index: 3;
+    z-index: -1;
     position: absolute;
-    top: 5%;
+    /* top: 5%; */
     right: 8%;
     width: 20%;
+    margin-top: -25%;
   }
   #chara .point img {
     width: 100%;
   }
-}
-#chara ul li {
-  text-align: center;
-}
-#chara ul li p {
-  font-size: 89%;
-  font-size: 0.88889rem;
-  text-align: center;
-  line-height: 1.2;
-  margin-top: 5px;
 }
 /* =====================================================
  * manga
@@ -662,14 +668,16 @@ video {
     text-align: center;
   }
   .contents_body{
-    background: transparent url(/img/contents_bg.png) center center repeat-y;
-    a:hover{
-      .ttl{
+    a{
+      p{
         text-decoration: none;
         span{
-          text-decoration: none;
+          text-decoration: underline;
         }
       }
+    }
+    a:hover{
+      text-decoration: none;
     }
     ul{
       overflow: hidden;
@@ -714,8 +722,52 @@ video {
       line-height: 20px;
       span{
         display: block;
-        text-decoration: underline;
       }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  #manga{
+    .contents_body {
+      text-align: center;
+      width: 100%;
+      .ttl{
+        font-size: 10px;
+        line-height: 15px;
+      }
+      ul{
+        width: 80%;
+        li{
+          margin-bottom: 10px;
+          width: 50%;
+          height: 110px;
+          text-align: left;
+          &:nth-child(odd){
+            margin-right: 0;
+          }
+        }
+      }
+      .img{
+        width: 60px;
+        height: 60px;
+        float: none;
+        margin: 10px auto 0;
+        &:before{
+          top: 20px;
+          background-size: 18px auto;
+        }
+      }
+      p{
+        font-size: 10px;
+      }
+    }
+   h1 {
+    position: absolute;
+    left: 20%;
+    width: 55%;
+    margin-top: -22%;
+    margin-left: 0;
+    top: auto;
     }
   }
 }

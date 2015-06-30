@@ -1,6 +1,9 @@
 /*--------------------
 common
 ----------------------*/
+//setting
+var h = $(window).height();
+var w = $(window).width();
 
 //load
 $(window).load(function(){
@@ -55,14 +58,6 @@ $(function() {
                      $(".copyright").fadeIn("slow");
                  }
              }
-  });
-});
-
-//point
-$(function(t) {
-  var i = ["chara","sns"];
-  t.each(i, function (i, n) {
-    t("#" + n).append('<div class="point"><img src="img/' + n + '_ttl_point.png"></div>')
   });
 });
 
@@ -127,3 +122,19 @@ if(_ua.Mobile || _ua.Mobile){
   $('#is--sound').remove();
   $('#is--video').remove();
 }
+$(window).on('load',function(){
+  if(w <= 768){
+    getSound.pause();
+    $('#is--video').hide();
+  }
+});
+$(window).resize(function(){
+  var w = $(window).width();
+  if(w <= 768){
+    getSound.pause();
+    $('#is--video').hide();
+  }else{
+    getSound.play();
+    $('#is--video').show();
+  }
+});
