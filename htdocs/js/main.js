@@ -1,11 +1,18 @@
 /*--------------------
-common
+ common
 ----------------------*/
-//setting
+// setting
 var h = $(window).height();
 var w = $(window).width();
-
-//load
+$(window).resize(function(){
+  var h = $(window).height();
+  var w = $(window).width();
+});
+var getSound = document.getElementById("is--sound");
+var getVideo = document.getElementById("is--video");
+var getStart = document.getElementById("soundStart");
+var getStop = document.getElementById("soundStop");
+// load
 $(window).load(function(){
     $('#gg0').css({'display':'none'});
     $('#gg').css({'display':'block'});
@@ -14,10 +21,49 @@ $(window).load(function(){
     });
 });
 
+/*--------------------
+ tablet & sp
+----------------------*/
+// setting
+var _ua = (function(u){
+  return {
+    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1)
+      || u.indexOf("ipad") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
+      || u.indexOf("kindle") != -1
+      || u.indexOf("silk") != -1
+      || u.indexOf("playbook") != -1,
+    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
+      || u.indexOf("iphone") != -1
+      || u.indexOf("ipod") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
+      || u.indexOf("blackberry") != -1
+  }
+})(window.navigator.userAgent.toLowerCase());
+// sound & video
+if(_ua.Tablet || _ua.Mobile){
+  getSound.remove();
+  getVideo.remove();
+}
+$(function(){
+  if(w <= 768){
+    getSound.pause();
+  }
+});
+$(window).resize(function(){
+  if(w <= 768){
+    getSound.pause();
+  }else{
+    getSound.play();
+  }
+});
+
+/*--------------------
+ PC (tablet & sp)
+----------------------*/
 // sound
-var getSound = document.getElementById("is--sound");
-var getStart = document.getElementById("soundStart");
-var getStop = document.getElementById("soundStop");
 function soundStop(){
   getSound.pause();
   getStart.style.display = "block";
@@ -28,46 +74,71 @@ function soundStart(){
   getStop.style.display = "block";
   getStart.style.display = "none";
 }
-
+// $(window).load(function(){
+//   // logo
+//   if(w > 768){
+//     $('.logo img').width(w * 5).animate({'width':'100%'},100);
+//   }
+// });
+$(function(){
 // fullpage
-$(function() {
   var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
       anchors:['mainPage','charaPage','mangaPage','snsPage'],
       onLeave: function(index, nextIndex, direction){
-                  if(index == 1 && direction =='down'){
-                      $(".toTop").fadeIn("slow"), $(".toTop").animate({
-                          bottom: "12"
-                      }, {
-                          duration: 600,
-                          queue: !1
-                      });
-                  }else if(index == 4 && direction == 'up'){
-                      $(".copyright").fadeOut("fast");
-                  }
-             },
-             afterLoad: function(anchorLink,index) {
-                 if(index == 1){
-                     $(".toTop").fadeOut("fast"), $(".toTop").animate({
-                         bottom: "35"
-                     }, {
-                         duration: 600,
-                         queue: !1
-                     });
-                 }else if(index == 4){
-                     $(".copyright").fadeIn("slow");
-                 }
-             }
+        if(_ua.Tablet || _ua.Mobile || w <= 768){
+          if(index == 4 && direction == 'up'){
+              $(".copyright").fadeOut("fast");
+              $(".toTop").fadeOut("fast"), $(".toTop").animate({
+                  bottom: "12"
+              }, {
+                  duration: 600,
+                  queue: !1
+              });
+          }
+        } else {
+          if(index == 1 && direction =='down'){
+              $(".toTop").fadeIn("slow"), $(".toTop").animate({
+                  bottom: "12"
+              }, {
+                  duration: 600,
+                  queue: !1
+              });
+          }else if(index == 4 && direction == 'up'){
+              $(".copyright").fadeOut("fast");
+          }
+        }
+     },
+     afterLoad: function(anchorLink,index) {
+       if(_ua.Tablet || _ua.Mobile || w <= 768){
+         if(index == 4){
+             $(".copyright").fadeIn("slow");
+             $(".toTop").fadeIn("slow"), $(".toTop").animate({
+                 bottom: "35"
+             }, {
+                 duration: 600,
+                 queue: !1
+             });
+         }
+       } else {
+         if(index == 1){
+             $(".toTop").fadeOut("fast"), $(".toTop").animate({
+                 bottom: "35"
+             }, {
+                 duration: 600,
+                 queue: !1
+             });
+         }else if(index == 4){
+             $(".copyright").fadeIn("slow");
+         }
+       }
+     }
   });
-});
-
-//colorbox
-$(function(){
+// colorbox
     $('.chara_tb').colorbox({inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
         var $getHref = $(this).find('a').attr('href');
         return $getHref;
-    }
-  });
+    }});
 });
 // function openCallBack(){
 //   var $getHref = $(this).find('a').attr('href');
@@ -94,47 +165,3 @@ $(function(){
 // //           left: "-53px"
 // //         }
 // }
-
-/*--------------------
- tablet & sp
-----------------------*/
-//setting
-var _ua = (function(u){
-  return {
-    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1)
-      || u.indexOf("ipad") != -1
-      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
-      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
-      || u.indexOf("kindle") != -1
-      || u.indexOf("silk") != -1
-      || u.indexOf("playbook") != -1,
-    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
-      || u.indexOf("iphone") != -1
-      || u.indexOf("ipod") != -1
-      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
-      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
-      || u.indexOf("blackberry") != -1
-  }
-})(window.navigator.userAgent.toLowerCase());
-
-//sound & video
-if(_ua.Mobile || _ua.Mobile){
-  $('#is--sound').remove();
-  $('#is--video').remove();
-}
-$(window).on('load',function(){
-  if(w <= 768){
-    getSound.pause();
-    $('#is--video').hide();
-  }
-});
-$(window).resize(function(){
-  var w = $(window).width();
-  if(w <= 768){
-    getSound.pause();
-    $('#is--video').hide();
-  }else{
-    getSound.play();
-    $('#is--video').show();
-  }
-});
