@@ -74,8 +74,8 @@ function soundStart(){
   getStop.style.display = "block";
   getStart.style.display = "none";
 }
-// $(window).load(function(){
 //   // logo
+// $(window).load(function(){
 //   if(w > 768){
 //     $('.logo img').width(w * 5).animate({'width':'100%'},100);
 //   }
@@ -140,28 +140,3 @@ $(function(){
         return $getHref;
     }});
 });
-// function openCallBack(){
-//   var $getHref = $(this).find('a').attr('href');
-//   console.log($getHref);
-// //       $('.chara_img').animate({
-// //           opacity: 1,
-// //         if(getId === 'koyama'){
-// //           bottom: "-40px",
-// //           left: "-109px"
-// //         } else if(getId === 'musashi'){
-// //           bottom: "-42px",
-// //           left: "-36px"
-// //         } else if(getId === 'myanya'){
-// //           bottom: "-51px",
-// //           left: "-78px"
-// //         } else if(getId === 'momo'){
-// //           bottom: "-42px",
-// //           left: "-34px"
-// //         } else if(getId === 'magenyan'){
-// //           bottom: "-43px",
-// //           left: "-110px"
-// //         } else if(getId === 'taro'){
-// //           bottom: "-48px",
-// //           left: "-53px"
-// //         }
-// }
