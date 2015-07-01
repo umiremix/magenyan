@@ -74,12 +74,12 @@ function soundStart(){
   getStop.style.display = "block";
   getStart.style.display = "none";
 }
-//   // logo
-// $(window).load(function(){
-//   if(w > 768){
-//     $('.logo img').width(w * 5).animate({'width':'100%'},100);
-//   }
-// });
+// logo
+$(window).load(function(){
+  if(w > 768){
+    $('.logo img').css({'width':w * 2,'margin-left':w * -0.5,'opacity':'0','margin-top': h * -1}).animate({'width':'100%','margin-left':'0','opacity':'1','margin-top':0},160);
+  }
+});
 $(function(){
 // fullpage
   var topBtn = $('#pageTop');
