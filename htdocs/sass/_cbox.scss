@@ -302,9 +302,10 @@
   }
   .text{
     position: absolute;
-    right: 220px;
+    right: 207px;
     top: 75px;
     height: 400px;
+    width: 351px;
     writing-mode: tb-rl; /* IE独自仕様 */
     writing-mode: vertical-rl;
     -moz-writing-mode: vertical-rl;
@@ -317,7 +318,10 @@
     left: 0;
   }
 }
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 640px) {
+  .name{
+    img{width: auto;}
+  }
   .box{
     &#koyama{
       .chara_img{
@@ -365,11 +369,26 @@
     right: -(32px + 47px);
   }
 }
+@media only screen and (max-width: 678px) {
+  #cboxClose {
+  top: -85px;
+  right: 0;
+  }
+  #cboxNext {
+  top: 110%;
+  right: 0;
+  }
+  #cboxPrevious {
+    top: 110%;
+    left: 0;
+  }
+}
 @media only screen and (max-width: 460px) {
   .box{
     width: 100%;
     height: 280px;
     .text{
+      width: 180px;
       font-size: 12px;
       right: 110px;
       height: 220px;
@@ -386,6 +405,9 @@
         top: 0;
         width: auto;
         zoom: 50%;
+        -moz-transform:
+        scale(0.50,0.50)
+        translate(-50%, -50%);
       }
     }
     .chara_img{
@@ -404,20 +426,56 @@
     top: -60px;
   }
   #cboxPrevious{
-    position: relative;
+    position: absolute;
     height: 40px;
     width: 40px;
-    left:0;
+    left: 0;
     background-size: 100%;
-    margin-top: 30px;
+    margin-top: 0;
   }
   #cboxNext{
     float: right;
-    position: relative;
+    position: absolute;
     height: 40px;
     width: 40px;
     right: 0;
     background-size: 100%;
-    margin-top: 30px;
+    margin-top: 0;
+  }
+  #cboxLoadingGraphic {
+    background: none;
+    height: 50px;
+    width: 50px;
+    background-size: 100%;
+  }
+  .box{
+    &#koyama{
+      .chara_img{
+      }
+    }
+    &#musashi{
+      .chara_img{
+        left: -10px;
+      }
+    }
+    &#nyanya{
+      .chara_img{
+        left: -10px;
+      }
+    }
+    &#momo{
+      .chara_img{
+        left: -10px;
+      }
+    }
+    &#magenyan{
+      .chara_img{
+      }
+    }
+    &#taro{
+      .chara_img{
+        left: -10px;
+      }
+    }
   }
 }

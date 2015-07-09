@@ -671,28 +671,32 @@ video {
       .ttl{
         font-size: 10px;
         line-height: 15px;
+        margin-bottom: 10%;
       }
       ul{
+        overflow: hidden;
         width: 80%;
         li{
           margin-bottom: 10px;
           width: 50%;
           height: 110px;
           text-align: left;
+          margin-bottom: 10%;
           &:nth-child(odd){
             margin-right: 0;
           }
         }
       }
       .img{
-        width: 60px;
-        height: 60px;
+        border-radius: 100%;
+        width: 40%;
+        height: auto;
         float: none;
         margin: 10px auto 0;
       }
       a .img {
         &:before{
-          top: 20px;
+          top: 40%;
           background-size: 18px auto;
         }
       }
@@ -713,13 +717,13 @@ video {
 /* =====================================================
  * sns
  * ===================================================== */
- #sns .contents_body {
-   display: table;
- }
  #sns .point {
    z-index: 6;
  }
 @media only screen and (min-width: 769px) {
+  #sns .contents_body {
+    display: table;
+  }
   #sns h1 {
     position: absolute;
     top: 105px;
@@ -883,7 +887,22 @@ video {
   #sns .contact{
     position: absolute;
     bottom: 210px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
   }
+  #footer{
+    position: relative;
+  }
+  #footer .toTop{
+    position: absolute;
+    display: block;
+    opacity: 1;
+    margin: 20px auto;
+  }
+    #footer .copyright{
+      display: block;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -892,5 +911,8 @@ video {
     &:before {
       height: 25%;
     }
+  }
+  #sns .contact{
+    bottom: 25%;
   }
 }

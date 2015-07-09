@@ -47,21 +47,31 @@ var _ua = (function(u){
 if(_ua.Tablet || _ua.Mobile){
   getSound.remove();
   getVideo.remove();
-  twHeightS;
+  window.orientationchange = function(){
+    location.reload();
+  }
+} else {
+  $(window).resize(function(){
+    location.reload();
+  });
 }
 $(function(){
   if(w <= 768){
     getSound.pause();
     $('.twitter-timeline').height('200');
+    if(h < w){
+      $('.section').height(h * 2 + 100);
+      $('#sns.section').height(h * 2 + 450);
+    }else{
+    $('.section').height(h + 100);
+    $('#sns.section').height(h + 300);
+    }
   }
 });
 $(window).load(function(){
   if(w <= 768){
     $('.twitter-timeline').height('200');
   }
-});
-$(window).resize(function(){
-  location.reload();
 });
 
 /*--------------------
@@ -85,28 +95,17 @@ $(window).load(function(){
   }
 });
 $(function(){
-//if(w > 768){
+if(w > 768){
 // fullpage
   var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
     resize: true,
       anchors:['mainPage','charaPage','mangaPage','snsPage'],
       onLeave: function(index, nextIndex, direction){
-        if(_ua.Tablet || _ua.Mobile || w <= 768){
-          if(index == 4 && direction == 'up'){
-              $(".copyright").fadeOut("fast");
-              $(".toTop").fadeOut("fast"), $(".toTop").animate({
-                  bottom: "12"
-              }, {
-                  duration: 600,
-                  queue: !1
-              });
-          }
-        } else {
           if(index == 1 && direction =='down'){
               $(".toTop").fadeIn("slow"), $(".toTop").animate({
                   bottom: "12",
-                  right: 0
+                  right: 30
               }, {
                   duration: 600,
                   queue: !1
@@ -114,20 +113,8 @@ $(function(){
           }else if(index == 4 && direction == 'up'){
               $(".copyright").fadeOut("fast");
           }
-        }
      },
      afterLoad: function(anchorLink,index) {
-       if(_ua.Tablet || _ua.Mobile || w <= 768){
-         if(index == 4){
-             $(".copyright").fadeIn("slow");
-             $(".toTop").fadeIn("slow"), $(".toTop").animate({
-                 bottom: "35"
-             }, {
-                 duration: 600,
-                 queue: !1
-             });
-          }
-       }else{
              if(index == 1){
                  $(".toTop").fadeOut("fast"), $(".toTop").animate({
                      bottom: "35"
@@ -138,18 +125,11 @@ $(function(){
              }else if(index == 4){
                  $(".copyright").fadeIn("slow");
              }
-       }
      }
   });
-//}
+}
 // colorbox
-  if(w > 768){
-    $('.chara_tb').colorbox({
-        inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
-          var $getHref = $(this).find('a').attr('href');
-          return $getHref;
-    }});
-  }else if(w > 460){
+  if(w > 460){
     $('.chara_tb').colorbox({
         inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
           var $getHref = $(this).find('a').attr('href');
@@ -157,9 +137,33 @@ $(function(){
     }});
   } else {
     $('.chara_tb').colorbox({
-        inline:true,rel:'box',width: 310,height: 280,opacity: 0.4,href: function(){
+        inline:true,rel:'box',width: 310,height: 282,opacity: 0.4,href: function(){
           var $getHref = $(this).find('a').attr('href');
           return $getHref;
     }});
   }
+  //スムーススクロール
+  if(w <= 768){
+     $('a[href^=#]').click(function(){
+       var findClass = $(this).attr('class');
+       if (findClass !== 'sc_none') {
+         var speed = 500;
+         var href= $(this).attr("href").replace('Page','');
+         var target = $(href == "#" || href == "" ? 'html' : href);
+         var position = target.offset().top;
+         $("html, body").animate({scrollTop:position}, speed, "swing");
+         return false;
+       }
+    });
+  }
+
+  //ブラウザバグ
+  var userAgent = window.navigator.userAgent.toLowerCase();
+
+  if (userAgent.indexOf('firefox') != -1) {
+    $('.nehan').each(function(){
+      $(this).find('br').remove();
+    });
+  }
+
 });
