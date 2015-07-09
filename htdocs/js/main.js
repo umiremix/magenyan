@@ -2,11 +2,12 @@
  common
 ----------------------*/
 // setting
-var h = $(window).height();
-var w = $(window).width();
+var h,w;
+h = $(window).height();
+w = $(window).width();
 $(window).resize(function(){
-  var h = $(window).height();
-  var w = $(window).width();
+  h = $(window).height();
+  w = $(window).width();
 });
 var getSound = document.getElementById("is--sound");
 var getVideo = document.getElementById("is--video");
@@ -46,18 +47,21 @@ var _ua = (function(u){
 if(_ua.Tablet || _ua.Mobile){
   getSound.remove();
   getVideo.remove();
+  twHeightS;
 }
 $(function(){
   if(w <= 768){
     getSound.pause();
+    $('.twitter-timeline').height('200');
+  }
+});
+$(window).load(function(){
+  if(w <= 768){
+    $('.twitter-timeline').height('200');
   }
 });
 $(window).resize(function(){
-  if(w <= 768){
-    getSound.pause();
-  }else{
-    getSound.play();
-  }
+  location.reload();
 });
 
 /*--------------------
@@ -81,9 +85,11 @@ $(window).load(function(){
   }
 });
 $(function(){
+//if(w > 768){
 // fullpage
   var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
+    resize: true,
       anchors:['mainPage','charaPage','mangaPage','snsPage'],
       onLeave: function(index, nextIndex, direction){
         if(_ua.Tablet || _ua.Mobile || w <= 768){
@@ -99,7 +105,8 @@ $(function(){
         } else {
           if(index == 1 && direction =='down'){
               $(".toTop").fadeIn("slow"), $(".toTop").animate({
-                  bottom: "12"
+                  bottom: "12",
+                  right: 0
               }, {
                   duration: 600,
                   queue: !1
@@ -119,24 +126,40 @@ $(function(){
                  duration: 600,
                  queue: !1
              });
-         }
-       } else {
-         if(index == 1){
-             $(".toTop").fadeOut("fast"), $(".toTop").animate({
-                 bottom: "35"
-             }, {
-                 duration: 600,
-                 queue: !1
-             });
-         }else if(index == 4){
-             $(".copyright").fadeIn("slow");
-         }
+          }
+       }else{
+             if(index == 1){
+                 $(".toTop").fadeOut("fast"), $(".toTop").animate({
+                     bottom: "35"
+                 }, {
+                     duration: 600,
+                     queue: !1
+                 });
+             }else if(index == 4){
+                 $(".copyright").fadeIn("slow");
+             }
        }
      }
   });
+//}
 // colorbox
-    $('.chara_tb').colorbox({inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
-        var $getHref = $(this).find('a').attr('href');
-        return $getHref;
+  if(w > 768){
+    $('.chara_tb').colorbox({
+        inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
+          var $getHref = $(this).find('a').attr('href');
+          return $getHref;
     }});
+  }else if(w > 460){
+    $('.chara_tb').colorbox({
+        inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
+          var $getHref = $(this).find('a').attr('href');
+          return $getHref;
+    }});
+  } else {
+    $('.chara_tb').colorbox({
+        inline:true,rel:'box',width: 310,height: 280,opacity: 0.4,href: function(){
+          var $getHref = $(this).find('a').attr('href');
+          return $getHref;
+    }});
+  }
 });

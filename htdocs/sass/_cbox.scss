@@ -41,6 +41,8 @@
   -webkit-overflow-scrolling: touch;
 }
 
+
+
 #cboxTitle {
   margin: 0;
 }
@@ -118,6 +120,11 @@
   background-position: 0 0;
   padding: 1px;
   position: relative;
+}
+@media only screen and (max-width: 768px) {
+  #cboxLoadedContent {
+    background-size: 100% auto;
+  }
 }
 
 #cboxLoadingGraphic {
@@ -252,8 +259,6 @@
 #cboxPrevious{
   background: url(../img/chara_lb/prev.png) no-repeat 0 0;
   position: absolute;
-  top: 50%;
-  left: -(32px + 47px);
   width: 47px;
   height: 47px;
 }
@@ -267,8 +272,6 @@
 #cboxNext{
   background: url(/img/chara_lb/next.png) no-repeat 0 0;
   position: absolute;
-  top: 50%;
-  right: -(32px + 47px);
   width: 47px;
   height: 47px;
 }
@@ -313,40 +316,108 @@
     bottom: 0;
     left: 0;
   }
-  &#koyama{
-    .chara_img{
-      bottom: -40px;
-      left: -109px;
+}
+@media only screen and (min-width: 769px) {
+  .box{
+    &#koyama{
+      .chara_img{
+        bottom: -40px;
+        left: -109px;
+      }
+    }
+    &#musashi{
+      .chara_img{
+        bottom: -42px;
+        left: -36px;
+      }
+    }
+    &#nyanya{
+      .chara_img{
+        bottom: -51px;
+        left: -78px;
+      }
+    }
+    &#momo{
+      .chara_img{
+        bottom: -42px;
+        left: -34px;
+      }
+    }
+    &#magenyan{
+      .chara_img{
+        bottom: -43px;
+        left: -110px;
+      }
+    }
+    &#taro{
+      .chara_img{
+        bottom: -48px;
+        left: -53px;
+      }
     }
   }
-  &#musashi{
+  #cboxPrevious{
+    top: 50%;
+    left: -(32px + 47px);
+  }
+  #cboxNext{
+    top: 50%;
+    right: -(32px + 47px);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .box{
+    width: 100%;
+    height: 280px;
+    .text{
+      font-size: 12px;
+      right: 110px;
+      height: 220px;
+      top: 30px;
+      line-height: 1.5;
+      letter-spacing: -1px;
+    }
+    .name{
+      top: 30px;
+      width: 20%;
+      height: 220px;
+      margin-right: 7%;
+      img{
+        top: 0;
+        width: auto;
+        zoom: 50%;
+      }
+    }
     .chara_img{
-      bottom: -42px;
-      left: -36px;
+      img{
+        width: 50%;
+      }
+      bottom: -10px;
+      left: -40px;
     }
   }
-  &#nyanya{
-    .chara_img{
-      bottom: -51px;
-      left: -78px;
-    }
+  #cboxClose{
+    height: 50px;
+    width: 50px;
+    background-size: 100%;
+    right: 0;
+    top: -60px;
   }
-  &#momo{
-    .chara_img{
-      bottom: -42px;
-      left: -34px;
-    }
+  #cboxPrevious{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    left:0;
+    background-size: 100%;
+    margin-top: 30px;
   }
-  &#magenyan{
-    .chara_img{
-      bottom: -43px;
-      left: -110px;
-    }
-  }
-  &#taro{
-    .chara_img{
-      bottom: -48px;
-      left: -53px;
-    }
+  #cboxNext{
+    float: right;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    right: 0;
+    background-size: 100%;
+    margin-top: 30px;
   }
 }
