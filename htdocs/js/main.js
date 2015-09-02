@@ -91,7 +91,17 @@ function soundStart(){
 // logo
 $(window).load(function(){
   if(w > 768){
-    $('.logo img').css({'width':w * 2,'margin-left':w * -0.5,'opacity':'0','margin-top': h * -1}).animate({'width':'100%','margin-left':'0','opacity':'1','margin-top':0},160);
+    $('.logo img').css({
+      'width':w * 2,
+      'margin-left':w * -0.5,
+      'opacity':'0',
+      'margin-top': h * -1
+    }).animate({
+      'width':'100%',
+      'margin-left':'0',
+      'opacity':'1',
+      'margin-top':0
+    },500,"easeOutElastic");
   }
 });
 $(function(){
@@ -151,7 +161,7 @@ if(w > 768){
          var href= $(this).attr("href").replace('Page','');
          var target = $(href == "#" || href == "" ? 'html' : href);
          var position = target.offset().top;
-         $("html, body").animate({scrollTop:position}, speed, "swing");
+         $("html, body").animate({scrollTop:position}, speed);
          return false;
        }
     });
@@ -167,3 +177,18 @@ if(w > 768){
   }
 
 });
+
+// バウンドhover
+if(w > 768){
+  $(window).load(function(){
+    $('.bound').each(function(){
+      var findImg = $(this).find('img');
+      var imgW = $(this).find('img').width();
+      $(this).hover(function(){
+        findImg.animate({width:imgW + 15},300,"easeOutElastic");
+      },function(){
+        findImg.animate({width:imgW},300,"easeOutElastic");
+      });
+    });
+  });
+}
