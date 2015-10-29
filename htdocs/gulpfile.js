@@ -46,6 +46,30 @@ gulp.task( 'ftpUp', function() {
         .pipe( conn.dest( '/public_html/mage.bam-tone.com' ) );
 } );
 
+gulp.task( 'ftpUpH', function() {
+    var conn = ftp.create( {
+        host:     'm9.coreserver.jp',
+        user:     'bambam',
+        password: 'oqmCqXInd7S3',
+        parallel: 5,
+        log: gutil.log
+    } );
+    var globs = [
+        'bgm/**',
+        'css/**',
+        'img/**',
+        'js/**',
+        '!sass/**',
+        'video/**',
+        'index.html'
+    ];
+    // using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+    return gulp.src( globs, { base: '.', buffer: false } )
+        .pipe( conn.newer( '/public_html/magenyan.com' ) ) // only upload newer files
+        .pipe( conn.dest( '/public_html/magenyan.com' ) );
+} );
+
 // js圧縮
 gulp.task('compress', function() {
   gulp.src(path.jsPath + '/main.js')
