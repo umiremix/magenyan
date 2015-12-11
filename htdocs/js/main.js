@@ -110,6 +110,7 @@ if(w > 768){
   var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
     resize: true,
+    normalScrollElements: '#manga .contents_body ul',
       anchors:['mainPage','charaPage','mangaPage','snsPage'],
       onLeave: function(index, nextIndex, direction){
           if(index == 1 && direction =='down'){

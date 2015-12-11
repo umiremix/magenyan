@@ -719,19 +719,21 @@ video {
       text-decoration: none;
     }
     ul{
-      overflow: hidden;
-      width: 270px + 270px + 80px;
+      overflow-x: hidden;
+      width: 270px + 270px + 80px + 20px;
       margin: 0 auto;
+      max-height: 400px;
+      overflow-y: scroll;
     }
     li{
       &:nth-child(odd){
         float: left;
-        margin-right: 80px;
+        margin-right: 50px;
       }
       &:nth-child(even){
         float: left;
       }
-      width: 270px;
+      width: 280px;
       height: 80px;
       margin-bottom: 20px;
     }
