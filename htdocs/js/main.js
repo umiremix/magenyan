@@ -73,6 +73,11 @@ $(window).load(function(){
     $('.twitter-timeline').height('200');
   }
 });
+$(window).load(function(){
+    $("#manga .contents_body ul").mCustomScrollbar({
+      theme: "inset-dark"
+    });
+});
 
 /*--------------------
  PC (tablet & sp)
