@@ -63,8 +63,12 @@ $(function(){
       $('.section').height(h * 2 + 100);
       $('#sns.section').height(h * 2 + 450);
     }else{
-    $('.section').height(h + 100);
-    $('#sns.section').height(h + 300);
+      $('.section').each(function(){
+        var thisH = $(this).height();
+        $(this).css({'min-height':thisH + 300});
+      });
+      $('#main.section').height(680);
+      $('#sns.section').height(1100);
     }
   }
 });
@@ -74,9 +78,11 @@ $(window).load(function(){
   }
 });
 $(window).load(function(){
+  if(w > 768){
     $("#manga .contents_body ul").mCustomScrollbar({
       theme: "inset-dark"
     });
+  }
 });
 
 /*--------------------

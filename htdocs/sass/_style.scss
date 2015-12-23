@@ -487,6 +487,9 @@ video {
   }
 }
 @media only screen and (max-width: 768px) {
+  #main{
+    margin-bottom: 100px;
+  }
   #main #nav ul {
     text-align: center;
     margin-top: 10px;
@@ -771,6 +774,7 @@ video {
 }
 @media only screen and (max-width: 768px) {
   #manga{
+    margin-bottom: 100px;
     .contents_body {
       text-align: center;
       width: 100%;
@@ -780,16 +784,23 @@ video {
         margin-bottom: 10%;
       }
       ul{
-        overflow: hidden;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        max-height: none;
         width: 80%;
         li{
           margin-bottom: 10px;
-          width: 50%;
+          width: 45%;
           height: 110px;
           text-align: left;
           margin-bottom: 10%;
           &:nth-child(odd){
+            padding-right: 5%;
             margin-right: 0;
+          }
+          &:nth-child(even){
+            margin-left: 5%;
           }
         }
       }
@@ -890,7 +901,7 @@ video {
     .twBox {
       width: 80%;
       margin: 0 auto;
-      height: 200px;
+      min-height: 200px;
     }
     .contents_body{
       a{
@@ -1022,6 +1033,6 @@ video {
     }
   }
   #sns .contact{
-    bottom: 25%;
+    /*bottom: 25%;*/
   }
 }
