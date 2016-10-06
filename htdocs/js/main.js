@@ -5,7 +5,7 @@
 var h,w;
 h = $(window).height();
 w = $(window).width();
-$(window).resize(function(){
+$(window).on('resize',function(){
   h = $(window).height();
   w = $(window).width();
 });
@@ -14,9 +14,7 @@ var getVideo = document.getElementById("is--video");
 var getStart = document.getElementById("soundStart");
 var getStop = document.getElementById("soundStop");
 // load
-$(window).load(function(){
-    $('#gg0').css({'display':'none'});
-    $('#gg').css({'display':'block'});
+$(window).on('load',function(){
     $('.load').each(function(){
         $(this).removeClass('load');
     });
@@ -51,9 +49,9 @@ if(_ua.Tablet || _ua.Mobile){
     location.reload();
   }
 } else {
-  $(window).resize(function(){
-    location.reload();
-  });
+  // $(window).resize(function(){
+  //   location.reload();
+  // });
 }
 $(function(){
   if(w <= 768){
@@ -72,18 +70,18 @@ $(function(){
     }
   }
 });
-$(window).load(function(){
+$(window).on('load',function(){
   if(w <= 768){
     $('.twitter-timeline').height('200');
   }
 });
-$(window).load(function(){
-  if(w > 768){
-    $("#manga .contents_body ul").mCustomScrollbar({
-      theme: "inset-dark"
-    });
-  }
-});
+// $(window).on('load',function(){
+//   if(w > 768){
+//     $("#manga .contents_body ul").mCustomScrollbar({
+//       theme: "inset-dark"
+//     });
+//   }
+// });
 
 /*--------------------
  PC (tablet & sp)
@@ -100,31 +98,31 @@ function soundStart(){
   getStart.style.display = "none";
 }
 // logo
-$(window).load(function(){
-  if(w > 768){
-    $('.logo img').css({
-      'width':w * 2,
-      'margin-left':w * -0.5,
-      'opacity':'0',
-      'margin-top': h * -1
-    }).animate({
-      'width':'100%',
-      'margin-left':'0',
-      'opacity':'1',
-      'margin-top':0
-    },500,"easeOutElastic");
-  }
-});
+// $(window).load(function(){
+//   if(w > 768){
+//     $('.logo img').css({
+//       'width':w * 2,
+//       'margin-left':w * -0.5,
+//       'opacity':'0',
+//       'margin-top': h * -1
+//     }).animate({
+//       'width':'100%',
+//       'margin-left':'0',
+//       'opacity':'1',
+//       'margin-top':0
+//     },500,"easeOutElastic");
+//   }
+// });
 $(function(){
 if(w > 768){
 // fullpage
-  var topBtn = $('#pageTop');
+  //var topBtn = $('#pageTop');
   $('#fullpage').fullpage({
     resize: true,
-    normalScrollElements: '#manga .contents_body ul',
-      anchors:['mainPage','charaPage','mangaPage','snsPage'],
+    //normalScrollElements: '#manga .contents_body ul',
+      anchors:['firstPage','mainPage','charaPage','snsPage'],
       onLeave: function(index, nextIndex, direction){
-          if(index == 1 && direction =='down'){
+          if(index == 3 && direction =='down'){
               $(".toTop").fadeIn("slow"), $(".toTop").animate({
                   bottom: "12",
                   right: 30
@@ -137,7 +135,7 @@ if(w > 768){
           }
      },
      afterLoad: function(anchorLink,index) {
-             if(index == 1){
+             if(index == 3){
                  $(".toTop").fadeOut("fast"), $(".toTop").animate({
                      bottom: "35"
                  }, {
@@ -181,18 +179,16 @@ if(w > 768){
 
   //ブラウザバグ
   var userAgent = window.navigator.userAgent.toLowerCase();
-
   if (userAgent.indexOf('firefox') != -1) {
     $('.nehan').each(function(){
       $(this).find('br').remove();
     });
   }
-
 });
 
 // バウンドhover
 if(w > 768){
-  $(window).load(function(){
+  $(window).on('load',function(){
     $('.bound').each(function(){
       var findImg = $(this).find('img');
       var imgW = $(this).find('img').width();
@@ -203,4 +199,97 @@ if(w > 768){
       });
     });
   });
+}
+
+/* 動画再生 */
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+var ytReady = false;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    videoId: 'A-M-FnHPHzU',
+    playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'enablejsapi': 1,
+        'iv_load_policy': 3,
+        'disablekb': 1,
+        'showinfo': 0,
+        'rel': 0,
+        'loop': 1,
+        'modestbranding': 1
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function resizeMovie (){
+    var $w = $(window),
+          bw = 1200, //基準にする横幅
+          bh = (bw/560) * 315, //基準にする高さ(510:315)
+          w = $w.width(), //表示サイズ(幅)
+          h = $w.height(), //表示サイズ(高さ)
+          mw = w, //動画サイズ(幅)
+          mh =  Math.round(bh * (mw/bw)); //動画サイズ(高さ)
+    if ( mh < h ) { //動画の高さが表示サイズの高さより小さかったら
+        mh = h; //表示サイズの高さに変更
+        mw = Math.round(bw * (mh/bh)); //高さに合わせて横幅変更
+    }
+    $('#player').css({
+        width: mw,
+        height: mh,
+        marginTop: (h - mh)/2,
+        marginLeft: (w - mw)/2
+    });
+}
+resizeMovie();
+$(window).on('load resize',resizeMovie);
+
+function onPlayerReady(event) {
+  ytReady = true;
+  player.setPlaybackQuality('hd720');
+}
+
+function ytReadyCheck() {
+	if(ytReady && YT.PlayerState.PLAYING === 1) {
+		player.playVideo();
+    $('#gg,#player').css({'display':'block'});
+    $('#gg0').css({'display':'none'});
+	} else {
+		setTimeout(ytReadyCheck, 200);
+	}
+}
+
+$(window).on('load',function(){
+  setTimeout(function() {
+		ytReadyCheck();
+	}, 650);
+});
+
+$('#soundStop').on('click',function(){
+  player.mute();
+  getStart.style.display = "block";
+  getStop.style.display = "none";
+});
+
+$('#soundStart').on('click',function(){
+  player.unMute();
+  getStart.style.display = "none";
+  getStop.style.display = "block";
+});
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.ENDED) {
+        player.playVideo();
+    }
 }

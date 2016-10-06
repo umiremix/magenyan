@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="ja" prefix="og: http://ogp.me/ns#">
 <head>
@@ -27,64 +26,99 @@
   <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+<div id="player"></div>
 <div id="gg0">
   <img src="img/loading.gif" alt="">
 </div>
 <div id="gg">
   <header id="header">
+    <h1 class="logo"><a href="/"><img src="img/main_logo.png" alt="どすこい二代目まげニャン"></a></h1>
     <div class="bgm">
-      <div class="controller" onclick="soundStop()" id="soundStop">
-        <img src="img/pause.png" alt="">
-      </div>
-      <div class="controller" onclick="soundStart()" id="soundStart" style="display:none;">
+      <div class="controller" id="soundStop">
         <img src="img/play.png" alt="">
       </div>
-      <p>HA・RI・TE イッパツ</p>
+      <div class="controller" id="soundStart" style="display:none;">
+        <img src="img/mute.png" alt="">
+      </div>
+      <p><img src="img/music_ttl.png" alt="New Release!「DOSUKOI DANCE」"></p>
+    </div>
+    <div class="share">
+      <p class="balloon"><img src="img/share_img_balloon.png" alt="シェニャアー！"></p>
+      <ul class="sns">
+        <li class="in"><a href="https://www.instagram.com/dosukoi.magenyan/" target="_blank"><img src="img/share_ico_in.png" alt="Instagram"></a></li>
+        <li class="tw"><a href="http://twitter.com/share?url=http://magenyan.com/&text=%E3%81%A9%E3%81%99%E3%81%93%E3%81%84%21%20%E3%81%BE%E3%81%92%E3%83%8B%E3%83%A3%E3%83%B3%E5%85%AC%E5%BC%8F%E3%82%B5%E3%82%A4%E3%83%88&via=dosukoimage&related=dosukoimage&hashtags=magenyan" target="_blank"><img src="img/share_ico_tw.png" alt="Twitter"></a></li>
+      </ul>
     </div>
   </header>
-
   <div id="fullpage">
 
-  <section id="main" class="section active load" data-anchor="mainPage">
+  <section id="first" class="section active load" data-anchor="firstPage">
   <div class="contents contents-Nobg">
-    <h1 class="logo"><img src="img/main_logo.png" alt="どすこい二代目まげニャン"></h1>
-    <div class="stamp">
-      <p class="no01">
-        <a href="https://store.line.me/stickershop/product/1103147/" target="_blank" class="bound">
-          <img src="img/stamp01.png" alt="LINEスタンプ まげニャン 第一弾">
-        </a>
-      </p>
-      <p class="no02">
-        <a href="https://store.line.me/stickershop/product/1172823/" target="_blank" class="bound">
-          <img src="img/stamp02.png" alt="LINEスタンプ まげニャン 第二弾">
-        </a>
-      </p>
-    </div>
     <div class="contents_body">
-      <nav id="nav">
-        <ul>
-          <li><a href="#charaPage" class="is--scroll"><img src="img/main_nav_chara.png" alt="キャラクター紹介" class="ov"></a></li>
-          <li><a href="#mangaPage" class="is--scroll"><img src="img/main_nav_manga.png" alt="漫画" class="ov"></a></li>
-          <li><a href="#snsPage" class="is--scroll"><img src="img/main_nav_tw.png" alt="公式Twitter" class="ov"></a></li>
-          <li><img src="img/main_nav_app.png" alt="アプリ"></li>
-        </ul>
-      </nav>
+    </div>
+  </div>
+  </section>
+
+  <section id="main" class="section load" data-anchor="mainPage">
+  <div class="contents contents-Nobg">
+    <div class="contents_body">
+      <div class="stamp">
+        <p class="no01">
+          <a href="https://store.line.me/stickershop/product/1103147/" target="_blank" class="bound">
+            <img src="img/stamp01.png" alt="LINEスタンプ まげニャン 第一弾">
+          </a>
+        </p>
+        <p class="no02">
+          <a href="https://store.line.me/stickershop/product/1172823/" target="_blank" class="bound">
+            <img src="img/stamp02.png" alt="LINEスタンプ まげニャン 第二弾">
+          </a>
+        </p>
+      </div>
+      <div class="goods">
+        <a href="https://dosukoimagenyan.stores.jp/" target="_blank">
+          <img src="img/goods_btn.png" alt="NEW！まげニャングッズニャンニャン登場！">
+        </a>
+      </div>
     </div>
   </div>
   </section>
 
   <section id="chara" class="section load" data-anchor="charaPage">
   <div class="contents contents-bg">
-    <h1><img src="img/chara_ttl.png" alt="キャラクター紹介"></h1>
+    <h1><img src="img/rank_ttl.png" alt="キャラクター人気番付"></h1>
     <div class="point"><img src="img/chara_ttl_point.png"></div>
     <div class="contents_body">
       <ul>
-        <li class="chara_tb"><a href="#magenyan" class="sc_none"><img src="img/chara_thumb01.png" alt="まげニャン（助六&amp;ニャン）"><p>まげニャン<br>（助六&amp;ニャン）</p></a></li>
-        <li class="chara_tb"><a href="#momo" class="sc_none"><img src="img/chara_thumb02.png" alt="桃山桃美"><p>桃山桃美</p></a></li>
-        <li class="chara_tb"><a href="#nyanya" class="sc_none"><img src="img/chara_thumb03.png" alt="にゃにゃみ"><p>にゃにゃみ</p></a></li>
-        <li class="chara_tb"><a href="#musashi" class="sc_none"><img src="img/chara_thumb04.png" alt="武蔵"><p>武蔵</p></a></li>
-        <li class="chara_tb"><a href="#koyama" class="sc_none"><img src="img/chara_thumb05.png" alt="小山・シャムパッティー・邦明"><p>小山・<br>シャムパッティー・邦明</p></a></li>
-        <li class="chara_tb"><a href="#taro" class="sc_none"><img src="img/chara_thumb06.png" alt="ボーノ・太郎"><p>ボーノ・太郎</p></a></li>
+        <li class="chara_tb rank1">
+          <a href="#magenyan" class="sc_none">
+            <img src="img/rank_img_1.png" alt="まげニャン（助六&amp;にゃん）">
+          </a>
+        </li>
+        <li class="chara_tb rank2">
+          <a href="#momo" class="sc_none">
+            <img src="img/rank_img_2.png" alt="桃山桃美">
+          </a>
+        </li>
+        <li class="chara_tb rank3">
+          <a href="#nyanya" class="sc_none">
+            <img src="img/rank_img_3.png" alt="にゃにゃみ">
+          </a>
+        </li>
+        <li class="chara_tb rank4">
+          <a href="#musashi" class="sc_none">
+            <img src="img/rank_img_4.png" alt="武蔵">
+          </a>
+        </li>
+        <li class="chara_tb rank5">
+          <a href="#koyama" class="sc_none">
+            <img src="img/rank_img_5.png" alt="小山・シャムパッティー・邦明">
+          </a>
+        </li>
+        <li class="chara_tb rank6">
+          <a href="#taro" class="sc_none">
+            <img src="img/rank_img_6.png" alt="ボーノ">
+          </a>
+        </li>
       </ul>
       <!-- box -->
       <div id="colorbox">
@@ -158,161 +192,33 @@
     </div>
   </div>
   </section>
-
-  <section id="manga" class="section load" data-anchor="mangaPage">
-  <div class="contents contents-bg">
-    <h1><img src="img/manga_ttl.png" alt="漫画"></h1>
-    <div class="contents_body">
-      <ul>
-        <li>
-          <a href="img/manga/manga_01.pdf" target="_blank">
-            <div class="img">
-              <img src="img/manga/tb_01.png" alt="" class="ov">
-            </div>
-            <p class="ttl">
-              第1話<span>まげニャン、<br>スーパーヒーローに！</span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="img/manga/manga_02.pdf" target="_blank">
-            <div class="img">
-              <img src="img/manga/tb_02.png" alt="" class="ov">
-            </div>
-            <p class="ttl">
-              第2話<span>まげニャンの憂鬱</span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="img/manga/manga_03.pdf" target="_blank">
-            <div class="img">
-              <img src="img/manga/tb_03.png" alt="" class="ov">
-            </div>
-            <p class="ttl">
-              第3話<span>まげニャン、サーカスに行く</span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="img/manga/manga_04.pdf" target="_blank">
-            <div class="img">
-              <img src="img/manga/tb_04.png" alt="">
-            </div>
-            <p class="ttl">
-              第4話<span>にゃんの苦悩</span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="img/manga/manga_05.pdf" target="_blank">
-            <div class="img">
-              <img src="img/manga/tb_05.png" alt="">
-            </div>
-            <p class="ttl">
-              第5話<span>まげニャンの休日</span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="img/manga/manga_06.pdf" target="_blank">
-            <div class="img">
-              <img src="img/manga/tb_06.png" alt="">
-            </div>
-            <p class="ttl">
-              第6話<span>まげニャンオンザベッド</span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <!--a href="#"-->
-          <div class="img">
-            <img src="img/manga/coming_soon.png" alt="">
-          </div>
-            <p class="ttl">
-              第7話<span>Coming soon...</span>
-            </p>
-          <!--/a-->
-        </li>
-        <li>
-          <!--a href="#"-->
-          <div class="img">
-            <img src="img/manga/coming_soon.png" alt="">
-          </div>
-            <p class="ttl">
-              第8話<span>Coming soon...</span>
-            </p>
-          <!--/a-->
-        </li>
-        <li>
-          <!--a href="#"-->
-          <div class="img">
-            <img src="img/manga/coming_soon.png" alt="">
-          </div>
-            <p class="ttl">
-              第9話<span>Coming soon...</span>
-            </p>
-          <!--/a-->
-        </li>
-        <li>
-          <!--a href="#"-->
-          <div class="img">
-            <img src="img/manga/coming_soon.png" alt="">
-          </div>
-            <p class="ttl">
-              第10話<span>Coming soon...</span>
-            </p>
-          <!--/a-->
-        </li>
-      </ul>
-    </div>
-  </div>
-  </section>
-
   <section id="sns" class="section load" data-anchor="snsPage">
   <div class="wrp_contents-contact">
-  <div class="contents contents-contact">
-    <h1><img src="img/sns_ttl.png" alt="公式ツイッター"></h1>
-    <div class="point"><img src="img/sns_ttl_point.png"></div>
-    <div class="contents_body">
-      <div class="twBox">
-        <a class="twitter-timeline" href="https://twitter.com/dosukoimage" data-widget-id="594529317171802112">@dosukoimageさんのツイート</a>
-        <script>
-          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-        </script>
-      </div>
-    </div>
-  </div>
   <div class="contact">
     <address><a href="mailto:dosukoi.magenyan@gmail.com"><img src="img/contact.png" alt="コンタクト" class="ov"></a></address>
   </div>
   </div>
   </section>
-
   </div>
-
   <footer id="footer">
     <div class="toTop">
-      <a href="#mainPage" class="is--scroll"><img src="img/toTop.png" alt="トップへ戻る" class="ov"></a>
+      <a href="#firstPage" class="is--scroll"><img src="img/toTop.png" alt="トップへ戻る" class="ov"></a>
     </div>
-      <small class="copyright">Copyright &copy; 2015 MageNyan All Rights Reserved.</small>
+      <small class="copyright">Copyright &copy; 2016 MageNyan All Rights Reserved.</small>
   </footer>
-
-  <audio id="is--sound" autoplay loop>
+  <!-- <audio id="is--sound" autoplay loop>
     <source src="bgm/demo0510.mp3" type="audio/mp3">
   </audio>
   <div class="pattern"></div>
   <video id="is--video" autoplay loop class="load">
     <source src="video/bg.mp4" type="video/mp4">
     <source src="video/bg.webm" type="video/webm">
-  </video>
+  </video> -->
 </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
   <script src="js/main.min.js"></script>
-
   <!-- Google Analytics -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -322,6 +228,5 @@
     ga('create', 'UA-64599703-1', 'auto');
     ga('send', 'pageview');
   </script>
-
 </body>
 </html>

@@ -11,7 +11,7 @@ var path = {
 // 使用パッケージ
 var gulp = require('gulp');
 var webserver = require('gulp-webserver'); // ローカルサーバ起動
-var compass = require('gulp-compass'); // Sassコンパイル
+var sass = require('gulp-sass'); // Sassコンパイル
 var autoprefixer = require('gulp-autoprefixer'); // ベンダープリフィックス付与
 var imagemin = require('gulp-imagemin'); // 画像圧縮
 var pngquant = require('imagemin-pngquant'); // 画像圧縮
@@ -91,10 +91,10 @@ gulp.task('webserver', function(){
 });
 
 // Sassをコンパイルし、ベンダープレフィックスを付与
-gulp.task('compass', function(){
+gulp.task('sass', function(){
   gulp.src(path.sassPath + '/*.scss')
     .pipe(plumber())
-    .pipe(compass({
+    .pipe(sass({
       config_file: 'config.rb',
       sass: path.sassPath,
       css: path.cssPath,
@@ -119,7 +119,7 @@ gulp.task('imagemin', function(){
 // sassファイル変更監視
 gulp.task('sassWatch', function() {
   gulp.watch(path.sassPath + '/*.scss', function(event){
-    gulp.run('compass')
+    gulp.run('sass')
   });
 });
 
@@ -131,4 +131,4 @@ gulp.task('jsWatch', function() {
 });
 
 // タスク実行
-gulp.task('default', ['ftpUp','webserver','compass','sassWatch','compress','jsWatch','imagemin']); // デフォルト実行
+gulp.task('default', ['ftpUp','webserver','sass','sassWatch','compress','jsWatch','imagemin']); // デフォルト実行

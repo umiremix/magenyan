@@ -1,12 +1,18 @@
 @charset "UTF-8";
 
-/*----------------------------------------------------------------------------
- * 02. Base Layer
- * コンポーネント （全ページ共通：margin、Helper classes、共通layout、extend）
- *---------------------------------------------------------------------------- */
-/* =====================================================
- * b01. setting
- * ===================================================== */
+// setting
+
+@mixin sm-screen {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin lg-screen {
+  @media only screen and (min-width: 769px) {
+    @content;
+  }
+}
+
 html,
 body {
   color: #909090;
@@ -21,10 +27,7 @@ body {
   background-repeat: no-repeat,repeat;
   background-size: auto auto,3px 3px;
   min-width: 320px;
-}
-@media only screen and (max-width: 768px) {
-  html,
-  body {
+  @include sm-screen {
     background-image: none;
   }
 }
@@ -71,9 +74,7 @@ video {
 
 img {
   border: none;
-}
-@media only screen and (max-width: 768px) {
-  img {
+  @include sm-screen {
     width: 100%;
     height: auto;
     vertical-align: top;
@@ -93,125 +94,126 @@ li {
   list-style-type: none;
 }
 
-/* =====================================================
- * b02. margin
- * ===================================================== */
-.mB0 {margin-bottom: 0px !important;}
-.mB1 {margin-bottom: 1px !important;}
-.mB2 {margin-bottom: 2px !important;}
-.mB3 {margin-bottom: 3px !important;}
-.mB4 {margin-bottom: 4px !important;}
-.mB5 {margin-bottom: 5px !important;}
-.mB6 {margin-bottom: 6px !important;}
-.mB7 {margin-bottom: 7px !important;}
-.mB8 {margin-bottom: 8px !important;}
-.mB9 {margin-bottom: 9px !important;}
-.mB10 {margin-bottom: 10px !important;}
-.mB15 {margin-bottom: 15px !important;}
-.mB20 {margin-bottom: 20px !important;}
-.mB25 {margin-bottom: 25px !important;}
-.mB30 {margin-bottom: 30px !important;}
-.mB35 {margin-bottom: 35px !important;}
-.mB40 {margin-bottom: 40px !important;}
-.mB45 {margin-bottom: 45px !important;}
-.mB50 {margin-bottom: 50px !important;}
-.mR0 {margin-right: 0 !important;}
 
-/* =====================================================
- * b03. Helper classes (extend placeholder)
- * ===================================================== */
-#chara ul:before, .inlineBox .box .line:before, .inlineBox .box .innerBox .inner:before, #chara ul:after, .inlineBox .box .line:after, .inlineBox .box .innerBox .inner:after {
-  content: " ";
-  display: table;
+// layout
+.load{
+  opacity: 0;
 }
-#chara ul:after, .inlineBox .box .line:after, .inlineBox .box .innerBox .inner:after {
-  clear: both;
+.sp_hidden{
+  @include sm-screen {
+   display: none;
+  }
 }
-.inlineBox .box .line, .inlineBox .box .innerBox, .inlineBox .box .innerBox .inner, .inlineBox .box .innerBox .inner li h2, .inlineBox .box .innerBox .inner li p {
-  box-sizing: border-box;
-}
-
-/* =====================================================
- * b04. layout
- * ===================================================== */
 #gg {
   display: none;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
-#gg0{
+#gg0 {
   width: 100%;
   height: 100%;
   background-color: #aff6df;
   background-image: url(/img/bg_pattern.png);
   background-repeat: repeat;
- }
-#gg0 img{
-  margin: auto;
-  position: absolute;
-  top:0;
-  left: 0;
-  right:0;
-  bottom:0;
-  z-index: 1;
+  img {
+    margin: auto;
+    position: absolute;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    z-index: 1;
+    @include sm-screen {
+      width: 80px;
+    }
+  }
 }
- .load{
-   opacity: 0;
- }
 #header {
   z-index: 7;
   position: fixed;
   top: 0;
   width: 100%;
-}
-#header .bgm {
-  position: absolute;
-  top: 8px;
-  left: 13px;
-  display: table;
-  border-collapse: separate;
-  border-spacing: 10px;
-}
-#header .bgm .controller {
-  position: relative;
-  vertical-align: middle;
-  width: 49px;
-  height: 49px;
-  background: transparent url(/img/bgm_bg.png) 0 0 no-repeat;
-  margin-right: 10px;
-  cursor: pointer;
-}
-#header .bgm .controller img {
-  position: absolute;
-  top: 15px;
-  left: 17px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#header .bgm p {
-  display: table-cell;
-  vertical-align: middle;
-}
-#header .bgm p:before {
-  content: "♪";
-  margin-right: 5px;
-}
-#header .sns {
-  position: absolute;
-  top: 0;
-  right: 20px;
-}
-@media only screen and (max-width: 768px) {
-  #gg0 img{
-    width: 80px;
+  .logo {
+      position: fixed;
+      top: 8px;
+      left: 16px;
+      margin: 0 auto;
+      width: 339px;
+      height: auto;
+      img {
+        width: 100%;
+        height: auto;
+      }
   }
-  #header .bgm {
-    display: none;
+  .bgm {
+    position: fixed;
+    bottom: 8px;
+    left: 13px;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 10px;
+    @include sm-screen {
+      display: none;
+    }
+    .controller {
+      position: relative;
+      vertical-align: middle;
+      width: 49px;
+      height: 49px;
+      background: transparent url(/img/bgm_bg.png) 0 0 no-repeat;
+      //margin-right: 10px;
+      cursor: pointer;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+    p {
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
-  #header .sns {
-    right: (20px / 2);
-    width: (314px / 2);
+  .share {
+    .balloon {
+      position: absolute;
+      top: 20px;
+      right: 160px;
+      width: 180px;
+      height: 78px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .sns {
+      .in {
+        right: 106px;
+      }
+      .tw {
+        right: 50px;
+      }
+      > * {
+        width: 42px;
+        height: 57px;
+        position: absolute;
+        top: 30px;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 }
-/*footer*/
+// footer
 #footer{
   position: absolute;
   bottom: 0;
@@ -233,45 +235,24 @@ li {
     bottom: 35px;
     right: 30px;
     display: none;
-  }
-}
-@media only screen and (max-width: 769px) {
-  #footer{
-      .toTop {
+    @include sm-screen {
       width: 100px;
       bottom: 20px;
       right: 0;
       left: 0;
     }
   }
-  .sp_hidden{
-    display: none;
-  }
 }
-@media only screen and (max-width: 768px) {
-  #footer{
-      .toTop {
-      width: 100px;
-      bottom: 20px;
-      right: 0;
-      left: 0;
-      margin: 0 auto;
-    }
-  }
-}
-
 #fullpage {
   z-index: 5;
 }
-
 .section {
   width: 100%;
   height: 100%;
   position: relative;
-}
-
-.section .contents {
-  z-index: 5;
+  .contents {
+    z-index: 5;
+  }
 }
 .section .contents.contents-Nobg {
   position: absolute;
@@ -281,7 +262,19 @@ li {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-  .section .contents.contents-bg {
+.section .contents.contents-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 847px;
+  @include sm-screen {
+    width: 87%;
+    margin: 0 auto;
+    background-size: contain;
+  }
     &:before {
       content: "";
       background-image: url(/img/contents_bg_top.png);
@@ -289,8 +282,11 @@ li {
       background-position: center bottom;
       background-size: 100% auto;
       width: 100%;
-      height: 245px;
+      height: 184px;
       display: block;
+      @include sm-screen {
+        height: 33%;
+      }
     }
     &:after {
       content: "";
@@ -299,47 +295,34 @@ li {
       background-position: center top;
       background-size: 100% auto;
       width: 100%;
-      height: 50px;
+      height: 37px;
       display: block;
     }
     .contents_body {
       background: transparent url(/img/contents_bg.png) center center repeat-y;
       background-size: 100% auto;
     }
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 847px;
-    height: 586px;
   }
- section.section .contents.contents-contact {
-   background: transparent url(/img/contents_bg_contact.png) center center no-repeat;
+section.section .contents.contents-contact {
+  background: transparent url(/img/contents_bg_contact.png) center center no-repeat;
   width: 847px;
   height: 586px;
-}
-@media only screen and (max-width: 768px) {
-  .section .contents.contents-bg,
-  .section .contents.contents-contact{
-    &:before {
+  @include sm-screen {
+    width: 87%;
+    margin: 0 auto;
+    background-image: none;
+    background-size: contain;
+  }
+  &:before {
+    @include sm-screen {
       height: 33%;
     }
   }
- section.section .contents.contents-bg,
- section.section .contents.contents-contact {
- /*background-color: #ffefe5;*/
-  width: 87%;
-  margin: 0 auto;
-  background-size: contain;
 }
+@media only screen and (max-width: 768px) {
  section.section .contents.contents-contact {
    /* background-color: #ffefe5; */
-  width: 87%;
- margin: 0 auto;
- background-image: none;
-   background-size: contain;
+
 }
  section.section h1 {
   z-index: 5;
@@ -368,21 +351,25 @@ width: 100%;
 
 section.section .contact {
   text-align: center;
+  @include sm-screen {
+    padding: 2% 0;
+  }
+  img {
+    @include sm-screen {
+      width: 87%;
+    }
+  }
 }
+
+.contents.contents-Nobg {
+  @include sm-screen {
+    width: 90%;
+  }
+}
+
 @media only screen and (min-width: 769px) {
   section.section .contact {
     padding-top: 2%;
-  }
-}
-@media only screen and (max-width: 768px) {
-  section.section .contact {
-    padding: 2% 0;
-  }
-  section.section .contact img {
-    width: 87%;
-  }
-  .contents.contents-Nobg {
-    width: 90%;
   }
 }
 
@@ -400,8 +387,8 @@ section.section .wrp_contents-contact {
   }
   .point {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 92px;
+    right: 0;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -416,35 +403,15 @@ section.section .wrp_contents-contact {
   left: 0;
   width: 100%;
   height: 100%;
-}
-@media only screen and (max-width: 768px) {
-  .pattern {
+  @include sm-screen {
     display: none;
   }
 }
 
-
-video {
-  z-index: 1;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-size: cover;
-  width: auto;
-  height: auto;
-  min-height: 100%;
-  min-width: 100%;
-}
-@media only screen and (max-width: 768px) {
-  video {
+#player {
+    position: relative;
+    z-index: 0;
     display: none;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  audio {
-    display: none;
-  }
 }
 
 /*----------------------------------------------------------------------------
@@ -454,56 +421,30 @@ video {
 /* =====================================================
  * main
  * ===================================================== */
-@media only screen and (max-width: 768px) {
-  #main h1 {
-    padding: 0 2%;
-    background-image: url(/img/sp_bg.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% auto;
-  }
-  #main h1 img {
-    width: 100%;
-    margin: 0% 0 36%;
-  }
-}
-@media only screen and (min-width: 769px) {
-  #main h1 {
-    margin: 0 auto;
-    width: 785px;
-    height: 444px;
-  }
-  #main #nav {
-    margin: 0 auto;
-    width: auto;
-  }
-  #main #nav ul {
-    display: table;
-    border-collapse: separate;
-    border-spacing: 13px;
-  }
-  #main #nav li {
-    display: table-cell;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #main{
+#main {
+  @include sm-screen {
     margin-bottom: 100px;
   }
-  #main #nav ul {
-    text-align: center;
-    margin-top: 10px;
-  }
-  #main #nav li {
-    display: inline;
-  }
-  #main #nav li:nth-child(odd) {
-    margin-right: 3%;
-  }
-  #main #nav li img {
-    width: 40%;
-    margin-bottom: 5px;
-  }
+ .contents_body {
+   width: 916px;
+   height: 382px;
+   position: relative;
+ }
+ h1 {
+   @include sm-screen {
+     padding: 0 2%;
+     background-image: url(/img/sp_bg.png);
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: 100% auto;
+   }
+   img {
+     @include sm-screen {
+       width: 100%;
+       margin: 0% 0 36%;
+     }
+   }
+ }
 }
 /* =====================================================
  * stamp
@@ -512,46 +453,11 @@ video {
   display: table;
   background-image: url(../img/stamp_bg.png);
   background-repeat: no-repeat;
-  background-position: 0 0;
+  background-position: 30px 0;
   position: absolute;
-  top: -70px;
-  right: -30px;
-  > p{
-    display: table-cell;
-  }
-  a{
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-}
-@media only screen and (min-width: 769px) {
-  .stamp{
-    width: 432px;
-    height: 288px;
-  }
-  .no01{
-    img{
-      width: 109px;
-      height: auto;
-      position: absolute;
-      top: 10px;
-      left: 3px;
-    }
-  }
-  .no02{
-    img{
-      width: 113px;
-      height: auto;
-      position: absolute;
-      top: 123px;
-      right: 0;
-    }
-  }
-}
-@media only screen and (max-width: 768px) {
-  .stamp{
+  width: 433px;
+  height: 369px;
+  @include sm-screen {
     position: relative;
     margin: 20px auto;
     width: (1177px / 2.5);
@@ -561,8 +467,24 @@ video {
     top: 0;
     right: 0;
   }
-  .no01{
-    img{
+  > p {
+    display: table-cell;
+  }
+  a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}
+.no01 {
+  img {
+    width: 109px;
+    height: auto;
+    position: absolute;
+    top: 75px;
+    left: 3px;
+    @include sm-screen {
       width: (285px / 2.5);
       height: auto;
       position: absolute;
@@ -570,14 +492,31 @@ video {
       left: 0;
     }
   }
-  .no02{
-    img{
+}
+.no02 {
+  img {
+    width: 113px;
+    height: auto;
+    position: absolute;
+    top: 220px;
+    left: 100px;
+    @include sm-screen {
       width: (292px / 2.5);
       height: auto;
       position: absolute;
       top: 10px;
       right: 0;
     }
+  }
+}
+.goods {
+  width: 451px;
+  height: 382px;
+  position: absolute;
+  right: 0;
+  img {
+    width: 100%;
+    height: auto;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -616,6 +555,30 @@ video {
 #chara .contents_body {
   display: table;
   width: 100%;
+  @include sm-screen {
+    text-align: center;
+    width: 100%;
+  }
+}
+#chara ul {
+  @include sm-screen {
+    display: inline-block;
+    text-align: center;
+  }
+  li {
+    @include sm-screen {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 3% 3%;
+      text-align: center;
+      width: 20%;
+    }
+    p{
+      @include sm-screen {
+        font-size: 10px;
+      }
+    }
+  }
 }
 #chara ul li p {
   text-align: center;
@@ -624,23 +587,57 @@ video {
 }
 #chara ul li {
   text-align: center;
+  margin-bottom: 20px;
+  &.rank1 {
+    margin-top: 25px;
+  }
+  &.rank2 {
+    margin-right: 20px;
+  }
+  &.rank4 {
+    margin-right: 20px;
+  }
+  &.rank5 {
+    margin-right: 20px;
+  }
+}
+#chara h1 {
+  position: absolute;
+  width: inherit;
+  top: 38px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  @include sm-screen {
+    position: absolute;
+    left: 20%;
+    width: 55%;
+    margin-top: -22%;
+  }
+}
+#chara .point {
+  @include sm-screen {
+    z-index: -1;
+    position: absolute;
+    /* top: 5%; */
+    right: 8%;
+    width: 20%;
+    margin-top: -25%;
+  }
+  img {
+    @include sm-screen {
+      width: 100%;
+    }
+  }
 }
 @media only screen and (min-width: 769px) {
-  #chara h1 {
-    position: absolute;
-    top: 62px;
-    left: 220px;
-    width: inherit;
-  }
   #chara ul {
-    width: 600px;
-    margin: -40px auto -30px;
+    width: 680px;
+    margin: 0 auto;
   }
   #chara ul li {
     float: left;
-    margin-right: 3px;
-    width: 198px;
-    height: 180px;
   }
   #chara ul li:nth-child(3) {
     margin-right: 0 !important;
@@ -653,182 +650,6 @@ video {
   }
   #chara .point img {
     position: relative;
-    top: -185px;
-    left: 240px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #chara .contents_body {
-    text-align: center;
-    width: 100%;
-  }
-  #chara h1 {
-    position: absolute;
-  left: 20%;
-  width: 55%;
-  margin-top: -22%;
-  }
-  #chara ul {
-    display: inline-block;
-    text-align: center;
-  }
-  #chara ul li {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 3% 3%;
-    text-align: center;
-    width: 20%;
-    p{
-      font-size: 10px;
-    }
-  }
-  #chara ul li img {
-    width: 100%;
-  }
-  #chara .point {
-    z-index: -1;
-    position: absolute;
-    /* top: 5%; */
-    right: 8%;
-    width: 20%;
-    margin-top: -25%;
-  }
-  #chara .point img {
-    width: 100%;
-  }
-}
-/* =====================================================
- * manga
- * ===================================================== */
-#manga{
-  h1 {
-    position: absolute;
-    top: 60px;
-    left: -50%;
-    width: 100%;
-    margin-left: 50%;
-    text-align: center;
-  }
-  .contents_body{
-    a{
-      p{
-        text-decoration: none;
-        span{
-          text-decoration: underline;
-        }
-      }
-    }
-    a:hover{
-      text-decoration: none;
-    }
-    ul{
-      overflow-x: hidden;
-      width: 270px + 270px + 80px + 20px;
-      margin: 0 auto;
-      max-height: 300px;
-      overflow-y: scroll;
-    }
-    li{
-      &:nth-child(odd){
-        float: left;
-        margin-right: 50px;
-      }
-      &:nth-child(even){
-        float: left;
-      }
-      width: 280px;
-      height: 80px;
-      margin-bottom: 20px;
-    }
-    a .img{
-      &:before{
-        content: "";
-        background-image: url(/img/manga_arrow.png);
-        background-repeat: no-repeat;
-        background-position: left center;
-        position: absolute;
-        top: 30px;
-        z-index: 100;
-        width: 24px;
-        height: 22px;
-      }
-    }
-    .img{
-      background-color: #fff;
-      position: relative;
-      overflow: hidden;
-      height: 80px;
-      width: 80px;
-      float: left;
-      border-radius: 40px;
-      margin-right: 15px;
-    }
-    .ttl{
-      font-size: 17px;
-      line-height: 20px;
-      span{
-        display: block;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 768px) {
-  #manga{
-    margin-bottom: 100px;
-    .contents_body {
-      text-align: center;
-      width: 100%;
-      .ttl{
-        font-size: 10px;
-        line-height: 15px;
-        margin-bottom: 10%;
-      }
-      ul{
-        height: auto;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        max-height: none;
-        width: 80%;
-        li{
-          margin-bottom: 10px;
-          width: 45%;
-          height: 110px;
-          text-align: left;
-          margin-bottom: 10%;
-          &:nth-child(odd){
-            padding-right: 5%;
-            margin-right: 0;
-          }
-          &:nth-child(even){
-            margin-left: 5%;
-          }
-        }
-      }
-      .img{
-        border-radius: 100%;
-        width: 40%;
-        height: auto;
-        float: none;
-        margin: 10px auto 0;
-      }
-      a .img {
-        &:before{
-          top: 40%;
-          background-size: 18px auto;
-        }
-      }
-      p{
-        font-size: 10px;
-      }
-    }
-   h1 {
-    position: absolute;
-    left: 20%;
-    width: 55%;
-    margin-top: -22%;
-    margin-left: 0;
-    top: auto;
-    }
   }
 }
 /* =====================================================
@@ -871,7 +692,7 @@ video {
       background-position: center bottom;
       background-size: 100% auto;
       width: 100%;
-      height: 245px;
+      height: 184px;
       display: block;
     }
     &:after {
