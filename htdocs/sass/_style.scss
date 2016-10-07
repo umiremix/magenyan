@@ -35,13 +35,15 @@ body {
 a {
   color: #909090;
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-a:hover img.ov {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: 0.8;
+  &:hover {
+    text-decoration: underline;
+    img {
+      &.ov {
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+        opacity: 0.8;
+      }
+    }
+  }
 }
 
 ::-moz-selection {
@@ -303,7 +305,7 @@ li {
       background-size: 100% auto;
     }
   }
-section.section .contents.contents-contact {
+.section .contents.contents-contact {
   background: transparent url(/img/contents_bg_contact.png) center center no-repeat;
   width: 847px;
   height: 586px;
@@ -320,39 +322,42 @@ section.section .contents.contents-contact {
   }
 }
 @media only screen and (max-width: 768px) {
- section.section .contents.contents-contact {
+ .section .contents.contents-contact {
    /* background-color: #ffefe5; */
 
 }
- section.section h1 {
+ .section h1 {
   z-index: 5;
  }
- section.section h1 img {
+ .section h1 img {
   width: 100%;
   vertical-align: top;
  }
-section.section .contents_bg_h {
+.section .contents_bg_h {
  width: 100%;
  position: relative;
  z-index: 4;
 }
-section.section .contents_bg_h img {
+.section .contents_bg_h img {
    width: 100%;
 }
-section.section .contents_bg_f {
+.section .contents_bg_f {
    width: 87%;
   margin: 0 auto;
  }
- section.section .contents_bg_f img {
+ .section .contents_bg_f img {
 width: 100%;
   vertical-align: top;
  }
 }
 
-section.section .contact {
+.section .contact {
   text-align: center;
   @include sm-screen {
     padding: 2% 0;
+  }
+  @include lg-screen {
+    padding-top: 2%;
   }
   img {
     @include sm-screen {
@@ -367,17 +372,9 @@ section.section .contact {
   }
 }
 
-@media only screen and (min-width: 769px) {
-  section.section .contact {
-    padding-top: 2%;
-  }
-}
-
-section.section .wrp_contents-contact {
+.section .wrp_contents-contact {
   z-index: 5;
-}
-@media only screen and (min-width: 769px) {
-  section.section .wrp_contents-contact {
+  @include lg-screen {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -385,7 +382,9 @@ section.section .wrp_contents-contact {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
-  .point {
+}
+.point {
+  @include lg-screen {
     position: absolute;
     top: 92px;
     right: 0;
@@ -394,6 +393,7 @@ section.section .wrp_contents-contact {
     transform: translate(-50%, -50%);
   }
 }
+
 
 .pattern {
   z-index: 2;
@@ -552,137 +552,143 @@ section.section .wrp_contents-contact {
 /* =====================================================
  * chara
  * ===================================================== */
-#chara .contents_body {
-  display: table;
-  width: 100%;
-  @include sm-screen {
-    text-align: center;
+#chara {
+  .contents_body {
+    display: table;
     width: 100%;
-  }
-}
-#chara ul {
-  @include sm-screen {
-    display: inline-block;
-    text-align: center;
-  }
-  li {
     @include sm-screen {
-      display: inline-block;
-      vertical-align: top;
-      margin: 0 3% 3%;
       text-align: center;
-      width: 20%;
-    }
-    p{
-      @include sm-screen {
-        font-size: 10px;
-      }
-    }
-  }
-}
-#chara ul li p {
-  text-align: center;
-  line-height: 1.2;
-  margin-top: 5px;
-}
-#chara ul li {
-  text-align: center;
-  margin-bottom: 20px;
-  &.rank1 {
-    margin-top: 25px;
-  }
-  &.rank2 {
-    margin-right: 20px;
-  }
-  &.rank4 {
-    margin-right: 20px;
-  }
-  &.rank5 {
-    margin-right: 20px;
-  }
-}
-#chara h1 {
-  position: absolute;
-  width: inherit;
-  top: 38px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  @include sm-screen {
-    position: absolute;
-    left: 20%;
-    width: 55%;
-    margin-top: -22%;
-  }
-}
-#chara .point {
-  @include sm-screen {
-    z-index: -1;
-    position: absolute;
-    /* top: 5%; */
-    right: 8%;
-    width: 20%;
-    margin-top: -25%;
-  }
-  img {
-    @include sm-screen {
       width: 100%;
     }
   }
-}
-@media only screen and (min-width: 769px) {
-  #chara ul {
-    width: 680px;
-    margin: 0 auto;
+  h1 {
+    position: absolute;
+    width: inherit;
+    top: 38px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    @include sm-screen {
+      position: absolute;
+      left: 20%;
+      width: 55%;
+      margin-top: -22%;
+    }
   }
-  #chara ul li {
-    float: left;
+  .point {
+    @include sm-screen {
+      z-index: -1;
+      position: absolute;
+      /* top: 5%; */
+      right: 8%;
+      width: 20%;
+      margin-top: -25%;
+    }
+    @include lg-screen {
+      z-index: -1;
+    }
+    img {
+      @include lg-screen {
+        position: relative;
+      }
+      @include sm-screen {
+        width: 100%;
+      }
+    }
   }
-  #chara ul li:nth-child(3) {
-    margin-right: 0 !important;
-  }
-  #chara ul li:nth-child(6) {
-    margin-right: 0 !important;
-  }
-  #chara .point {
-    z-index: -1;
-  }
-  #chara .point img {
-    position: relative;
+  ul {
+    @include lg-screen {
+      width: 680px;
+      margin: 0 auto;
+    }
+    @include sm-screen {
+      display: inline-block;
+      text-align: center;
+    }
+    li {
+      text-align: center;
+      margin-bottom: 20px;
+      @include lg-screen {
+        float: left;
+      }
+      &:nth-child(3) {
+        @include lg-screen {
+          margin-right: 0 !important;
+        }
+      }
+      &:nth-child(6) {
+        @include lg-screen {
+          margin-right: 0 !important;
+        }
+      }
+      &.rank1 {
+        margin-top: 25px;
+      }
+      &.rank2 {
+        margin-right: 20px;
+      }
+      &.rank4 {
+        margin-right: 20px;
+      }
+      &.rank5 {
+        margin-right: 20px;
+      }
+      @include sm-screen {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 3% 3%;
+        text-align: center;
+        width: 20%;
+      }
+      p{
+        text-align: center;
+        line-height: 1.2;
+        margin-top: 5px;
+        @include sm-screen {
+          font-size: 10px;
+        }
+      }
+    }
   }
 }
 /* =====================================================
  * sns
  * ===================================================== */
- #sns .point {
-   z-index: 6;
+ #sns {
+   h1 {
+     @include lg-screen {
+       position: absolute;
+       top: 105px;
+       left: 155px;
+       width: inherit;
+     }
+   }
+   .point {
+     z-index: 6;
+     img {
+       @include lg-screen {
+         position: relative;
+         top: -235px;
+         left: 130px;
+       }
+     }
+   }
+   .contents_body {
+     @include lg-screen {
+       display: table;
+       margin: 0 auto;
+       width: auto;
+       position: relative;
+       top: 225px;
+     }
+   }
+   .twBox {
+     @include lg-screen {
+       width: 460px;
+     }
+   }
  }
-@media only screen and (min-width: 769px) {
-  #sns .contents_body {
-    display: table;
-  }
-  #sns h1 {
-    position: absolute;
-    top: 105px;
-    left: 155px;
-    width: inherit;
-  }
-  #sns .contents_body {
-    margin: 0 auto;
-    width: auto;
-    position: relative;
-    top: 225px;
-  }
-  #sns .twBox {
-    width: 460px;
-  }
-  #sns .point img {
-    position: relative;
-    top: -235px;
-    left: 130px;
-  }
-}
 @media only screen and (max-width: 768px) {
   .section .contents.contents-contact {
     &:before {
