@@ -731,7 +731,7 @@ body {
   font-family: Arial, Verdana, "ＭＳ Ｐゴシック","游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
   width: 100%;
   height: 100%;
-  background-color: #aff6df;
+  background-color: #8e65cd;
   background-image: url(/img/sp_bg.png), url(/img/bg_pattern.png);
   background-position: center center,0 0;
   background-repeat: no-repeat,repeat;
@@ -786,7 +786,7 @@ img {
 textarea {
   resize: vertical; }
 
-ul, h1, h2, p {
+ul, h1, h2, p, figure {
   margin: 0;
   padding: 0; }
 
@@ -798,6 +798,10 @@ li {
 
 @media only screen and (max-width: 768px) {
   .sp_hidden {
+    display: none; } }
+
+@media only screen and (min-width: 769px) {
+  .pc_hidden {
     display: none; } }
 
 #gg {
@@ -831,14 +835,23 @@ li {
   z-index: 7;
   position: fixed;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  min-width: 320px; }
+  @media only screen and (max-width: 768px) {
+    #header {
+      position: static; } }
   #header .logo {
-    position: fixed;
+    position: absolute;
     top: 8px;
     left: 16px;
     margin: 0 auto;
     width: 339px;
     height: auto; }
+    @media only screen and (max-width: 768px) {
+      #header .logo {
+        left: 10px;
+        top: 6px;
+        width: 41.91667%; } }
     #header .logo img {
       width: 100%;
       height: auto; }
@@ -874,19 +887,38 @@ li {
     top: 20px;
     right: 160px;
     width: 180px;
-    height: 78px; }
+    height: auto; }
+    @media only screen and (max-width: 768px) {
+      #header .share .balloon {
+        top: 22px;
+        right: auto;
+        left: 48.33333%;
+        width: 30.25%; } }
     #header .share .balloon img {
       width: 100%;
       height: auto; }
   #header .share .sns .in {
     right: 106px; }
+    @media only screen and (max-width: 768px) {
+      #header .share .sns .in {
+        right: auto;
+        left: 80.16667%; } }
   #header .share .sns .tw {
     right: 50px; }
+    @media only screen and (max-width: 768px) {
+      #header .share .sns .tw {
+        right: 10px;
+        left: 89.66667%; } }
   #header .share .sns > * {
     width: 42px;
     height: 57px;
     position: absolute;
     top: 30px; }
+    @media only screen and (max-width: 768px) {
+      #header .share .sns > * {
+        width: 7%;
+        height: auto;
+        top: 29px; } }
     #header .share .sns > * img {
       width: 100%;
       height: auto; }
@@ -926,6 +958,10 @@ li {
   height: 100%;
   position: relative; }
   @media only screen and (max-width: 768px) {
+    .section {
+      position: static;
+      height: auto; } }
+  @media only screen and (max-width: 768px) {
     .section h1 {
       z-index: 5; } }
   @media only screen and (max-width: 768px) {
@@ -943,7 +979,14 @@ li {
       transform: translate(-50%, -50%); }
       @media only screen and (max-width: 768px) {
         .section .contents.contents-Nobg {
-          width: 90%; } }
+          position: static;
+          width: auto;
+          top: auto;
+          left: auto;
+          -webkit-transform: none;
+              -ms-transform: none;
+                  transform: none;
+          margin: auto 10px; } }
     .section .contents.contents-bg {
       position: absolute;
       top: 0;
@@ -956,7 +999,8 @@ li {
         .section .contents.contents-bg {
           width: 87%;
           margin: 0 auto;
-          background-size: contain; } }
+          background-size: contain;
+          position: static; } }
       .section .contents.contents-bg:before {
         content: "";
         background-image: url(/img/contents_bg_top.png);
@@ -1063,6 +1107,18 @@ li {
  * 各カテゴリのスタイル指定
  *---------------------------------------------------------------------------- */
 /* =====================================================
+  * first
+  * ===================================================== */
+@media only screen and (max-width: 768px) {
+  #first {
+    text-align: center;
+    margin: 120px 0 50px; } }
+
+#first .sp_video {
+  width: 300px;
+  margin: auto; }
+
+/* =====================================================
  * main
  * ===================================================== */
 @media only screen and (max-width: 768px) {
@@ -1073,6 +1129,13 @@ li {
   width: 916px;
   height: 382px;
   position: relative; }
+  @media only screen and (max-width: 768px) {
+    #main .contents_body {
+      width: auto;
+      margin: 10px;
+      margin: auto;
+      height: auto;
+      position: static; } }
 
 @media only screen and (max-width: 768px) {
   #main h1 {
@@ -1087,94 +1150,72 @@ li {
     width: 100%;
     margin: 0% 0 36%; } }
 
-/* =====================================================
- * stamp
- * ===================================================== */
-.stamp {
-  display: table;
-  background-image: url(../img/stamp_bg.png);
-  background-repeat: no-repeat;
-  background-position: 30px 0;
+#main .stamp {
   position: absolute;
   width: 433px;
-  height: 369px; }
+  height: auto; }
   @media only screen and (max-width: 768px) {
-    .stamp {
-      position: relative;
-      margin: 20px auto;
-      width: 470.8px;
-      height: 212.4px;
-      background-image: url(../img/stamp_bg_sp.png);
-      background-size: 100% auto;
-      top: 0;
-      right: 0; } }
-  .stamp > p {
-    display: table-cell; }
-  .stamp a {
+    #main .stamp {
+      position: static;
+      width: auto; } }
+  #main .stamp_bg {
+    position: absolute;
+    left: 30px; }
+  #main .stamp_list {
+    display: table;
+    width: 100%; }
+    @media only screen and (max-width: 768px) {
+      #main .stamp_list {
+        width: auto; } }
+    #main .stamp_list_cell {
+      display: table-cell; }
+      #main .stamp_list_cell-1 img {
+        width: 109px;
+        height: auto;
+        position: absolute;
+        top: 75px;
+        left: 3px; }
+        @media only screen and (max-width: 768px) {
+          #main .stamp_list_cell-1 img {
+            width: 114px;
+            height: auto;
+            position: absolute;
+            top: 5px;
+            left: 0; } }
+      #main .stamp_list_cell-2 img {
+        width: 113px;
+        height: auto;
+        position: absolute;
+        top: 220px;
+        left: 100px; }
+        @media only screen and (max-width: 768px) {
+          #main .stamp_list_cell-2 img {
+            width: 116.8px;
+            height: auto;
+            position: absolute;
+            top: 10px;
+            right: 0; } }
+  #main .stamp a {
     display: block;
     width: 100%;
     height: 100%;
     position: relative; }
 
-.no01 img {
-  width: 109px;
-  height: auto;
-  position: absolute;
-  top: 75px;
-  left: 3px; }
-  @media only screen and (max-width: 768px) {
-    .no01 img {
-      width: 114px;
-      height: auto;
-      position: absolute;
-      top: 5px;
-      left: 0; } }
-
-.no02 img {
-  width: 113px;
-  height: auto;
-  position: absolute;
-  top: 220px;
-  left: 100px; }
-  @media only screen and (max-width: 768px) {
-    .no02 img {
-      width: 116.8px;
-      height: auto;
-      position: absolute;
-      top: 10px;
-      right: 0; } }
-
-.goods {
+#main .goods {
   width: 451px;
   height: 382px;
   position: absolute;
   right: 0; }
-  .goods img {
+  @media only screen and (max-width: 768px) {
+    #main .goods {
+      width: auto;
+      height: auto;
+      max-width: 451px;
+      max-height: 382px;
+      position: static; } }
+  #main .goods img {
     width: 100%;
     height: auto; }
-
-@media only screen and (max-width: 480px) {
-  .stamp {
-    position: relative;
-    margin: 20px auto;
-    width: 294.25px;
-    height: 132.75px;
-    background-image: url(../img/stamp_bg_sp.png);
-    background-size: 100% auto;
-    top: 0;
-    right: 0; }
-  .no01 img {
-    width: 71.25px;
-    height: auto;
-    position: absolute;
-    top: 5px;
-    left: 0; }
-  .no02 img {
-    width: 73px;
-    height: auto;
-    position: absolute;
-    top: 10px;
-    right: 0; } }
 
 /* =====================================================
  * chara
@@ -1267,168 +1308,6 @@ li {
     @media only screen and (max-width: 768px) {
       #chara ul li p {
         font-size: 10px; } }
-
-/* =====================================================
- * sns
- * ===================================================== */
-@media only screen and (min-width: 769px) {
-  #sns h1 {
-    position: absolute;
-    top: 105px;
-    left: 155px;
-    width: inherit; } }
-
-#sns .point {
-  z-index: 6; }
-  @media only screen and (min-width: 769px) {
-    #sns .point img {
-      position: relative;
-      top: -235px;
-      left: 130px; } }
-
-@media only screen and (min-width: 769px) {
-  #sns .contents_body {
-    display: table;
-    margin: 0 auto;
-    width: auto;
-    position: relative;
-    top: 225px; } }
-
-@media only screen and (min-width: 769px) {
-  #sns .twBox {
-    width: 460px; } }
-
-@media only screen and (max-width: 768px) {
-  .section .contents.contents-contact {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 847px;
-    height: 586px; }
-    .section .contents.contents-contact:before {
-      content: "";
-      background-image: url(/img/contents_bg_top.png);
-      background-repeat: no-repeat;
-      background-position: center bottom;
-      background-size: 100% auto;
-      width: 100%;
-      height: 184px;
-      display: block; }
-    .section .contents.contents-contact:after {
-      content: "";
-      background-image: url(/img/contents_bg_bottom.png);
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: 100% auto;
-      width: 100%;
-      height: 50px;
-      display: block; }
-    .section .contents.contents-contact .contents_body {
-      background: transparent url(/img/contents_bg.png) center center repeat-y;
-      background-size: 100% auto; }
-  #sns .twBox {
-    width: 80%;
-    margin: 0 auto;
-    min-height: 200px; }
-  #sns .contents_body a p {
-    text-decoration: none; }
-    #sns .contents_body a p span {
-      text-decoration: underline; }
-  #sns .contents_body a:hover {
-    text-decoration: none; }
-  #sns .contents_body ul {
-    overflow: hidden;
-    width: 620px;
-    margin: 0 auto; }
-  #sns .contents_body li {
-    width: 270px;
-    height: 80px;
-    margin-bottom: 20px; }
-    #sns .contents_body li:nth-child(odd) {
-      float: left;
-      margin-right: 80px; }
-    #sns .contents_body li:nth-child(even) {
-      float: left; }
-  #sns .contents_body a .img:before {
-    content: "";
-    background-image: url(/img/manga_arrow.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    position: absolute;
-    top: 30px;
-    z-index: 100;
-    width: 24px;
-    height: 22px; }
-  #sns .contents_body .img {
-    background-color: #fff;
-    position: relative;
-    overflow: hidden;
-    height: 80px;
-    width: 80px;
-    float: left;
-    border-radius: 40px;
-    margin-right: 15px; }
-  #sns .contents_body .ttl {
-    font-size: 17px;
-    line-height: 20px; }
-    #sns .contents_body .ttl span {
-      display: block; }
-  #sns .contents_body {
-    text-align: center;
-    width: 100%; }
-  #sns h1 {
-    position: absolute;
-    left: 15%;
-    width: 55%;
-    margin-top: -20%; }
-  #sns ul {
-    display: inline-block;
-    text-align: center; }
-  #sns ul li {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 3% 3%;
-    text-align: center;
-    width: 20%; }
-    #sns ul li p {
-      font-size: 10px; }
-  #sns ul li img {
-    width: 100%; }
-  #sns .point {
-    position: absolute;
-    /* top: 5%; */
-    right: 8%;
-    width: 20%;
-    margin-top: -25%; }
-  #sns .point img {
-    width: 100%; }
-  #sns .contact {
-    position: absolute;
-    bottom: 210px;
-    margin: 0 auto;
-    left: 0;
-    right: 0; }
-  #footer {
-    position: relative; }
-  #footer .toTop {
-    position: absolute;
-    display: block;
-    opacity: 1;
-    margin: 20px auto; }
-  #footer .copyright {
-    display: block; } }
-
-@media only screen and (max-width: 480px) {
-  .section {
-    margin-top: 40px; }
-  .section .contents.contents-bg:before,
-  .section .contents.contents-contact:before {
-    height: 25%; }
-  #sns .contact {
-    /*bottom: 25%;*/ } }
 
 /*
 == malihu jquery custom scrollbar plugin ==
