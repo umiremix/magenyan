@@ -22,9 +22,9 @@ body {
   width: 100%;
   height: 100%;
   background-color: #8e65cd;
-  background-image: url(/img/sp_bg.png),url(/img/bg_pattern.png);
-  background-position: center center,0 0;
-  background-repeat: no-repeat,repeat;
+  background-image: url(/img/bg_pattern.png);
+  background-position: 0 0;
+  background-repeat: repeat;
   background-size: auto auto,3px 3px;
   min-width: 320px;
   @include sm-screen {
@@ -87,7 +87,7 @@ textarea {
   resize: vertical;
 }
 
-ul, h1, h2, p, figure {
+ol, ul, h1, h2, p, figure {
   margin: 0;
   padding: 0;
 }
@@ -119,6 +119,7 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
+  min-width: 320px;
 }
 #gg0 {
   width: 100%;
@@ -255,6 +256,9 @@ li {
   z-index: 7;
   width: 100%;
   text-align: center;
+  @include sm-screen {
+    position: static;
+  }
   .copyright{
     position: absolute;
     font-size: 12px;
@@ -264,6 +268,12 @@ li {
     width: 100%;
     text-align: center;
     display: none;
+    @include sm-screen {
+      position: static;
+      display: block;
+      width: auto;
+      margin: auto;
+    }
   }
   .toTop {
     position: fixed;
@@ -271,10 +281,14 @@ li {
     right: 30px;
     display: none;
     @include sm-screen {
-      width: 100px;
+      position: static;
+      width: (322 / 1200 * 100%);
+      max-width: (322px / 2);
       bottom: 20px;
       right: 0;
       left: 0;
+      margin: 20px auto 10px;
+      display: block;
     }
   }
 }
@@ -286,7 +300,8 @@ li {
   height: 100%;
   position: relative;
   @include sm-screen {
-    position: static;
+    //position: static;
+    min-width: 320px;
     height: auto;
   }
   h1 {
@@ -310,7 +325,7 @@ li {
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       @include sm-screen {
-        position: static;
+        position: relative;;
         width: auto;
         top: auto;
         left: auto;
@@ -332,33 +347,36 @@ li {
         background-size: contain;
         position: static;
       }
-      &:before {
-        content: "";
-        background-image: url(/img/contents_bg_top.png);
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        background-size: 100% auto;
-        width: 100%;
-        height: 184px;
-        display: block;
-        @include sm-screen {
-          height: 33%;
-        }
-      }
+      // &:before {
+      //   content: "";
+      //   background-image: url(/img/contents_bg_top.png);
+      //   background-repeat: no-repeat;
+      //   background-position: center bottom;
+      //   background-size: 100% auto;
+      //   width: 100%;
+      //   height: 184px;
+      //   display: block;
+      //   @include sm-screen {
+      //     //height: 33%;
+      //   }
+      // }
       &:after {
         content: "";
         background-image: url(/img/contents_bg_bottom.png);
         background-repeat: no-repeat;
         background-position: center top;
-        background-size: 100% auto;
+        //background-size: 100% auto;
         width: 100%;
         height: 37px;
         display: block;
+        @include sm-screen {
+          background-size: 100% auto;
+        }
       }
-      .contents_body {
-        background: transparent url(/img/contents_bg.png) center center repeat-y;
-        background-size: 100% auto;
-      }
+      // .contents_body {
+      //
+      //   //background-size: 100% auto;
+      // }
     }
     &.contents-contact {
       background: transparent url(/img/contents_bg_contact.png) center center no-repeat;
@@ -403,15 +421,15 @@ li {
   }
   .contact {
     text-align: center;
+    padding-top: 2%;
     @include sm-screen {
       padding: 2% 0;
     }
-    @include lg-screen {
-      padding-top: 2%;
-    }
     img {
+      width: 476px;
       @include sm-screen {
-        width: 87%;
+        width: (1044 / 1200 * 100%);
+        max-width: (1044px / 2);
       }
     }
   }
@@ -425,17 +443,6 @@ li {
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
     }
-  }
-}
-
-.point {
-  @include lg-screen {
-    position: absolute;
-    top: 92px;
-    right: 0;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -470,7 +477,7 @@ li {
   #first {
     @include sm-screen {
       text-align: center;
-      margin: 120px 0 50px;
+      margin: 140px 0 50px;
     }
     .sp_video {
       width: 300px;
@@ -481,9 +488,6 @@ li {
  * main
  * ===================================================== */
 #main {
-  @include sm-screen {
-    margin-bottom: 100px;
-  }
  .contents_body {
    width: 916px;
    height: 382px;
@@ -532,44 +536,55 @@ li {
      // right: 0;
    }
    &_bg {
-     position: absolute;
-     left: 30px;
+     &_img {
+        position: absolute;
+        left: 80px;
+       width: 382px;
+       max-width: 451px;
+       @include sm-screen {
+         width: 95%;
+         left: 5%;
+         right: 0;
+         margin: auto;
+       }
+     }
    }
    &_list {
      display: table;
      width: 100%;
-     @include sm-screen {
-       width: auto;
-     }
+     max-width: 451px;
+     margin: auto;
+     padding-top: 30%;
      &_cell {
        display: table-cell;
+       vertical-align: top;
        &-1 {
+         //padding-top: 30%;
          img {
            width: 109px;
            height: auto;
-           position: absolute;
+           //position: absolute;
            top: 75px;
            left: 3px;
            @include sm-screen {
-             width: (285px / 2.5);
+             width: (262 / 600 * 100%);
              height: auto;
-             position: absolute;
-             top: 5px;
-             left: 0;
            }
          }
        }
        &-2 {
+         padding-top: 20%;
+         text-align: right;
          img {
            width: 113px;
            height: auto;
-           position: absolute;
+           //position: absolute;
            top: 220px;
            left: 100px;
            @include sm-screen {
-             width: (292px / 2.5);
+             width: (272 / 600 * 100%);
              height: auto;
-             position: absolute;
+             //position: absolute;
              top: 10px;
              right: 0;
            }
@@ -582,6 +597,7 @@ li {
      width: 100%;
      height: 100%;
      position: relative;
+     padding-bottom: 50%;
    }
  }
  .goods {
@@ -595,6 +611,7 @@ li {
      max-width: 451px;
      max-height: 382px;
      position: static;
+     margin: 0 auto 50px;
    }
    img {
      width: 100%;
@@ -607,12 +624,20 @@ li {
  * chara
  * ===================================================== */
 #chara {
+  .chara_bgTop {
+    margin-left: 4px;
+    @include sm-screen {
+      margin-left: 0;
+    }
+  }
   .contents_body {
+    background: transparent url(/img/contents_bg.png) center center repeat-y;
     display: table;
     width: 100%;
     @include sm-screen {
       text-align: center;
       width: 100%;
+      background-size: 100% auto;
     }
   }
   h1 {
@@ -624,47 +649,47 @@ li {
     margin: auto;
     text-align: center;
     @include sm-screen {
-      position: absolute;
-      left: 20%;
-      width: 55%;
-      margin-top: -22%;
+      width: (781 / 1200 * 100%);
+      max-width: (781px / 2);
+      top: 20px;
+      // position: absolute;
+      // left: 20%;
+      // width: 55%;
+      // margin-top: -22%;
     }
   }
   .point {
+    position: absolute;
+    z-index: -1;
+    top: 30px;
+    right: 47px;
     @include sm-screen {
-      z-index: -1;
-      position: absolute;
-      /* top: 5%; */
-      right: 8%;
-      width: 20%;
-      margin-top: -25%;
-    }
-    @include lg-screen {
-      z-index: -1;
+      width: (179 / 1200 * 100%);
+      top: 9px;
+      right: 13%;
     }
     img {
-      @include lg-screen {
-        position: relative;
-      }
+      position: relative;
       @include sm-screen {
         width: 100%;
       }
     }
   }
   ul {
-    @include lg-screen {
       width: 680px;
       margin: 0 auto;
-    }
     @include sm-screen {
       display: inline-block;
       text-align: center;
+      width: 80%;
+      padding-top: 20px;
     }
     li {
       text-align: center;
       margin-bottom: 20px;
-      @include lg-screen {
-        float: left;
+      float: left;
+      @include sm-screen {
+        margin-bottom: 10px;
       }
       &:nth-child(3) {
         @include lg-screen {
@@ -678,22 +703,41 @@ li {
       }
       &.rank1 {
         margin-top: 25px;
+        @include sm-screen {
+          margin-top: 0;
+        }
       }
       &.rank2 {
         margin-right: 20px;
+        @include sm-screen {
+          margin-right: 4%;
+          width: 48%;
+        }
+      }
+      &.rank3 {
+        @include sm-screen {
+          width: 48%;
+        }
       }
       &.rank4 {
         margin-right: 20px;
+        @include sm-screen {
+          margin-right: 4%;
+          width: 48%;
+        }
       }
       &.rank5 {
         margin-right: 20px;
+        @include sm-screen {
+          margin-right: 0;
+          width: 48%;
+        }
       }
-      @include sm-screen {
-        display: inline-block;
-        vertical-align: top;
-        margin: 0 3% 3%;
-        text-align: center;
-        width: 20%;
+      &.rank6 {
+        @include sm-screen {
+          margin-right: 4%;
+          width: 48%;
+        }
       }
       p{
         text-align: center;

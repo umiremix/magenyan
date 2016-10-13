@@ -136,13 +136,13 @@ if(w > 768){
   };
   //スムーススクロール
   if(w <= 768){
-     $('a[href^=#]').on('click',function(){
+      $('a[href^="#"]').click(function(){
        var findClass = $(this).attr('class');
        if (findClass !== 'sc_none') {
          var speed = 500;
          var href= $(this).attr("href").replace('Page','');
          var target = $(href == "#" || href == "" ? 'html' : href);
-         var position = target.offset().top;
+         var position = target.offset().top - 500;
          $("html, body").animate({scrollTop:position}, speed);
          return false;
        };
