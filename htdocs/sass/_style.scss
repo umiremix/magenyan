@@ -282,13 +282,18 @@ li {
     display: none;
     @include sm-screen {
       position: static;
-      width: (322 / 1200 * 100%);
-      max-width: (322px / 2);
+      display: block;
       bottom: 20px;
       right: 0;
       left: 0;
       margin: 20px auto 10px;
-      display: block;
+    }
+    img {
+      width: 161px;
+      @include sm-screen {
+        width: (322 / 1200 * 100%);
+        max-width: (322px / 2);
+      }
     }
   }
 }
@@ -516,29 +521,17 @@ li {
    }
  }
  .stamp{
-   //display: table;
-   //background-image: url(../img/stamp_bg.png);
-   //background-repeat: no-repeat;
-   //background-position: 30px 0;
    position: absolute;
    width: 433px;
    height: auto;
    @include sm-screen {
      position: static;
      width: auto;
-     // margin: 20px auto;
-     // width: (1177px / 2.5);
-     // height: (531px / 2.5);
-     //background-image: url(../img/stamp_bg_sp.png);
-     //background-size: 100% auto;
-     //background-position: center center;
-     // top: 0;
-     // right: 0;
    }
    &_bg {
      &_img {
         position: absolute;
-        left: 80px;
+        left: 40px;
        width: 382px;
        max-width: 451px;
        @include sm-screen {
@@ -554,16 +547,14 @@ li {
      width: 100%;
      max-width: 451px;
      margin: auto;
-     padding-top: 30%;
+     padding-top: 25%;
      &_cell {
        display: table-cell;
        vertical-align: top;
        &-1 {
-         //padding-top: 30%;
          img {
            width: 109px;
            height: auto;
-           //position: absolute;
            top: 75px;
            left: 3px;
            @include sm-screen {
@@ -573,12 +564,11 @@ li {
          }
        }
        &-2 {
-         padding-top: 20%;
+         padding-top: 30%;
          text-align: right;
          img {
            width: 113px;
            height: auto;
-           //position: absolute;
            top: 220px;
            left: 100px;
            @include sm-screen {
@@ -628,6 +618,7 @@ li {
     margin-left: 4px;
     @include sm-screen {
       margin-left: 0;
+      margin-bottom: -1px;
     }
   }
   .contents_body {
@@ -691,6 +682,10 @@ li {
       @include sm-screen {
         margin-bottom: 10px;
       }
+      img {
+        width: 100%;
+        height: auto;
+      }
       &:nth-child(3) {
         @include lg-screen {
           margin-right: 0 !important;
@@ -709,17 +704,20 @@ li {
       }
       &.rank2 {
         margin-right: 20px;
+        width: 330px;
         @include sm-screen {
           margin-right: 4%;
           width: 48%;
         }
       }
       &.rank3 {
+        width: 330px;
         @include sm-screen {
           width: 48%;
         }
       }
       &.rank4 {
+        width: 213px;
         margin-right: 20px;
         @include sm-screen {
           margin-right: 4%;
@@ -727,6 +725,7 @@ li {
         }
       }
       &.rank5 {
+        width: 213px;
         margin-right: 20px;
         @include sm-screen {
           margin-right: 0;
@@ -734,6 +733,7 @@ li {
         }
       }
       &.rank6 {
+        width: 213px;
         @include sm-screen {
           margin-right: 4%;
           width: 48%;

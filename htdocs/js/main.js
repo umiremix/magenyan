@@ -43,33 +43,10 @@ var _ua = (function(u){
 })(window.navigator.userAgent.toLowerCase());
 // sound & video
 if(_ua.Tablet || _ua.Mobile){
-  // getSound.remove();
-  // getVideo.remove();
   window.orientationchange = function(){
     location.reload();
   };
-} else {
-  // $(window).resize(function(){
-  //   location.reload();
-  // });
 };
-$(function(){
-  // if(w <= 768){
-  //   //getSound.pause();
-  //   $('.twitter-timeline').height('200');
-  //   if(h < w){
-  //     $('.section').height(h * 2 + 100);
-  //     $('#sns.section').height(h * 2 + 450);
-  //   }else{
-  //     $('.section').each(function(){
-  //       var thisH = $(this).height();
-  //       $(this).css({'min-height':thisH + 300});
-  //     });
-  //     $('#main.section').height(680);
-  //     $('#sns.section').height(1100);
-  //   };
-  // };
-});
 
 /*--------------------
  PC (tablet & sp)
@@ -121,7 +98,7 @@ if(w > 768){
   });
 };
 // colorbox
-  if(w > 460){
+  if(w > 768){
     $('.chara_tb').colorbox({
         inline:true,rel:'box',width: 597,height: 545,opacity: 0.4,href: function(){
           var $getHref = $(this).find('a').attr('href');
@@ -261,3 +238,30 @@ if(w > 768){
     $('#gg0').css({'display':'none'});
   });
 }
+var loadFlag;
+$(window).on('load',function(){
+  if(w > 768){
+    loadFlag = 'lgScreen';
+  } else {
+    loadFlag = 'smScreen';
+  }
+});
+$(window).on('resize',function(){
+  if(w > 768 && loadFlag === 'smScreen'){
+    location.reload();
+    loadFlag = 'lgScreen';
+  } else if(w <= 768 && loadFlag === 'lgScreen') {
+    location.reload();
+    loadFlag = 'smScreen';
+  }
+});
+$(window).on('load resize',function(){
+  $('.s-changeImg').each(function(){
+      var findSrc = $(this).attr('src');
+      if(findSrc.match(/_pc/) && w <= 768){
+        $(this).attr('src',findSrc.replace('_pc','_sp'));
+      } else if(findSrc.match(/_sp/) && w > 768){
+        $(this).attr('src',findSrc.replace('_sp','_pc'));
+      }
+    });
+});
