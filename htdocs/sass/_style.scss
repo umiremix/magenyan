@@ -524,6 +524,12 @@ li {
    position: absolute;
    width: 433px;
    height: auto;
+   &:hover {
+     @include lg-screen {
+       transform: scale( 1.1 );
+       transition: all 0.1s ease; 
+     }
+    }
    @include sm-screen {
      position: static;
      width: auto;
@@ -595,6 +601,12 @@ li {
    height: 382px;
    position: absolute;
    right: 0;
+   &:hover {
+     @include lg-screen {
+       transform: scale( 1.1 );
+       transition: all 0.1s ease;
+     }
+  }
    @include sm-screen {
      width: auto;
      height: auto;

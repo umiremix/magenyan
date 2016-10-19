@@ -136,19 +136,19 @@ if(w > 768){
 });
 
 // バウンドhover
-if(w > 768){
-  $(window).on('load',function(){
-    $('.bound').each(function(){
-      var findImg = $(this).find('img');
-      var imgW = $(this).find('img').width();
-      $(this).hover(function(){
-        findImg.animate({width:imgW + 15},300,"easeOutElastic");
-      },function(){
-        findImg.animate({width:imgW},300,"easeOutElastic");
-      });
-    });
-  });
-};
+// if(w > 768){
+//   $(window).on('load',function(){
+//     $('.bound').each(function(){
+//       var findImg = $(this).find('img');
+//       var imgW = $(this).find('img').width();
+//       $(this).hover(function(){
+//         findImg.animate({width:imgW + 15},300,"easeOutElastic");
+//       },function(){
+//         findImg.animate({width:imgW},300,"easeOutElastic");
+//       });
+//     });
+//   });
+// };
 
 /* 動画再生 */
 if(w > 768){
