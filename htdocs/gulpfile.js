@@ -35,6 +35,7 @@ gulp.task( 'ftpUp', function() {
         'css/**',
         'img/**',
         'js/**',
+        'archive/**',
         'sass/**',
         'video/**',
         'index.html'
