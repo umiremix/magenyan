@@ -1147,13 +1147,6 @@ li {
   position: absolute;
   width: 433px;
   height: auto; }
-  @media only screen and (min-width: 769px) {
-    #main .stamp:hover {
-      -webkit-transform: scale(1.1);
-          -ms-transform: scale(1.1);
-              transform: scale(1.1);
-      -webkit-transition: all 0.1s ease;
-              transition: all 0.1s ease; } }
   @media only screen and (max-width: 768px) {
     #main .stamp {
       position: static;
@@ -1213,13 +1206,10 @@ li {
   height: 382px;
   position: absolute;
   right: 0; }
-  @media only screen and (min-width: 769px) {
-    #main .goods:hover {
-      -webkit-transform: scale(1.1);
-          -ms-transform: scale(1.1);
-              transform: scale(1.1);
-      -webkit-transition: all 0.1s ease;
-              transition: all 0.1s ease; } }
+  #main .goods:hover {
+    @inflc transform: scale( 1.1 );
+    -webkit-transition: all 0.1s ease;
+            transition: all 0.1s ease; }
   @media only screen and (max-width: 768px) {
     #main .goods {
       width: auto;
@@ -1351,6 +1341,52 @@ li {
       @media only screen and (max-width: 768px) {
         #chara ul li p {
           font-size: 10px; } }
+
+/* animate */
+@-webkit-keyframes bounce {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  25% {
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75); }
+  60% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  90% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+@keyframes bounce {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  25% {
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75); }
+  60% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  90% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@media only screen and (min-width: 769px) {
+  .bounce {
+    -webkit-animation-name: bounce;
+            animation-name: bounce; } }
+
+@media only screen and (min-width: 769px) {
+  .animated {
+    -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both; } }
 
 /*
 == malihu jquery custom scrollbar plugin ==

@@ -265,3 +265,12 @@ $(window).on('load resize',function(){
       }
     });
 });
+$(function(){
+  $('.is-bounce').mouseenter(function(){
+      if(w > 768){
+        $(this).addClass('animated bounce').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+          $(this).removeClass('animated bounce');
+        });
+      }
+    });
+});

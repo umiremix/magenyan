@@ -525,10 +525,8 @@ li {
    width: 433px;
    height: auto;
    &:hover {
-     @include lg-screen {
-       transform: scale( 1.1 );
-       transition: all 0.1s ease; 
-     }
+    // transform: scale( 1.1 );
+    // transition: all 0.1s ease;
     }
    @include sm-screen {
      position: static;
@@ -602,10 +600,9 @@ li {
    position: absolute;
    right: 0;
    &:hover {
-     @include lg-screen {
-       transform: scale( 1.1 );
-       transition: all 0.1s ease;
-     }
+     @inflc
+    transform: scale( 1.1 );
+    transition: all 0.1s ease;
   }
    @include sm-screen {
      width: auto;
@@ -760,5 +757,40 @@ li {
         }
       }
     }
+  }
+}
+
+/* animate */
+@keyframes bounce {
+  from {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(0.75);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  90% {
+    transform: scale(0.95);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.bounce {
+  @include lg-screen {
+    animation-name: bounce;
+  }
+}
+.animated {
+  @include lg-screen {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
   }
 }
